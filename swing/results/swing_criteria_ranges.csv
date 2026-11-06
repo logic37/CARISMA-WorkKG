@@ -1,0 +1,12 @@
+criterion,worst_case_lead,worst_case_rival_or_new_leader,best_case_lead,best_case_rival
+Vulnerability mgmt,-3.28,Train OT staff,10.80,Improve processes
+Incident detection,-1.91,Train OT staff,9.66,Improve processes
+Backup & recovery,-1.51,Improve processes,9.31,Train OT staff
+Identity & access,-0.33,Improve processes,8.17,Train OT staff
+Security awareness,0.66,Train OT staff,8.04,Train OT staff
+
+investment,score_all_lower_bounds,score_midpoints,score_all_upper_bounds
+Hire OT security engineer,37.6,50.9,64.2
+Train OT staff,33.5,46.6,59.6
+Improve processes,33.8,46.5,59.2
+Outsource monitoring (MSSP),24.9,35.9,47.0

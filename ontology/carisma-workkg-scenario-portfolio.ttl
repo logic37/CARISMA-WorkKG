@@ -1,0 +1,2277 @@
+@prefix cw: <https://ict.ihu.gr/carisma-workkg#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pf: <https://ict.ihu.gr/carisma-workkg/scenario/portfolio#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:A1_LogCorrelationTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Log-correlation upskilling (Analysts B, C)" ;
+    cw:addressesGap ex:ProficiencyGap_R1_LogCorrelation ;
+    cw:currency "EUR" ;
+    cw:durationDays "45"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 3000.0 .
+
+ex:A2_ReportingTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Incident-reporting training" ;
+    cw:addressesGap ex:ProficiencyGap_R3_IncidentReporting ;
+    cw:currency "EUR" ;
+    cw:durationDays "20"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 1500.0 ;
+    cw:requiresAction ex:A4_EscalationProcedure .
+
+ex:A3_TuningReassessment a owl:NamedIndividual,
+        cw:ReassessmentAction ;
+    rdfs:label "Re-assess detection-rule tuning competence" ;
+    cw:addressesGap ex:EvidenceGap_R4_DetectionRuleTuning ;
+    cw:currency "EUR" ;
+    cw:durationDays "10"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 500.0 .
+
+ex:AssignA a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee ex:AnalystA ;
+    cw:assignedProfile ex:CyberIncidentResponder ;
+    cw:assignmentUnit ex:SOC ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+ex:AssignB a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee ex:AnalystB ;
+    cw:assignedProfile ex:CyberIncidentResponder ;
+    cw:assignmentUnit ex:SOC ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+ex:AssignC a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee ex:AnalystC ;
+    cw:assignedProfile ex:CyberIncidentResponder ;
+    cw:assignmentUnit ex:SOC ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+ex:CapabilityGap_IncidentDetection a owl:NamedIndividual,
+        cw:CapabilityGapAssessment ;
+    prov:wasDerivedFrom ex:EvidenceGap_R4_DetectionRuleTuning,
+        ex:MaturityGap_IncidentDetection,
+        ex:ProficiencyGap_R1_LogCorrelation,
+        ex:ProficiencyGap_R3_IncidentReporting ;
+    cw:combinedGapScore 0.3875 ;
+    cw:comparedMaturity ex:MA_IncidentDetection ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapPriority 0.34875 ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:maturityEvidenceCoverage 0.8 ;
+    cw:maturityGapScore 0.375 ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.3" ;
+    cw:priorityDetermined true ;
+    cw:proficiencyEvidenceCoverage 0.83333 ;
+    cw:proficiencyGapScore 0.4 .
+
+ex:Coverage_R2_IncidentTriage a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_Triage,
+        ex:CA_B_Triage,
+        ex:CA_C_Triage ;
+    cw:coverageDeficiency 0.0 ;
+    cw:coverageRequirement ex:R2_IncidentTriage ;
+    cw:coverageStatus cw:Covered ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "2"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee ex:AnalystA,
+        ex:AnalystB .
+
+ex:P4 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P4 - expert" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "4"^^xsd:nonNegativeInteger .
+
+ex:UndetectedIntrusion a owl:NamedIndividual,
+        cw:RiskScenario ;
+    rdfs:label "Intrusion on production systems goes undetected" ;
+    cw:affectsAsset ex:ProductionSIEM ;
+    cw:dependsOnCapability ex:IncidentDetection .
+
+<https://ict.ihu.gr/carisma-workkg/scenario/portfolio> a owl:Ontology ;
+    rdfs:label "CARISMA-WorkKG illustrative capability portfolio" ;
+    dcterms:creator "Adam P. Filippidis" ;
+    rdfs:comment "Six capabilities with contrasting gap profiles (incident detection plus five added here), used to evaluate the ranking and its sensitivity. Hypothetical, illustrative values." ;
+    owl:imports <https://ict.ihu.gr/carisma-workkg> ;
+    owl:versionInfo "0.3.0" .
+
+pf:AssignD a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee pf:AnalystD ;
+    cw:assignedProfile ex:CybersecurityImplementer ;
+    cw:assignmentUnit pf:ITOperations ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+pf:AssignE a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee pf:AnalystE ;
+    cw:assignedProfile ex:CybersecurityImplementer ;
+    cw:assignmentUnit pf:ITOperations ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+pf:AssignF a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee pf:AnalystF ;
+    cw:assignedProfile ex:CybersecurityImplementer ;
+    cw:assignmentUnit pf:ITOperations ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+pf:AssignG a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee pf:AnalystG ;
+    cw:assignedProfile ex:CybersecurityImplementer ;
+    cw:assignmentUnit pf:IAMTeam ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+pf:AssignH a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee pf:AnalystH ;
+    cw:assignedProfile ex:CybersecurityImplementer ;
+    cw:assignmentUnit pf:IAMTeam ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+pf:AssignI a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee pf:AnalystI ;
+    cw:assignedProfile ex:CybersecurityEducator ;
+    cw:assignmentUnit pf:GRCTeam ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+pf:AssignJ a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee pf:AnalystJ ;
+    cw:assignedProfile ex:CybersecurityEducator ;
+    cw:assignmentUnit pf:GRCTeam ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+pf:BR_A1_BackupTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Backup administration training" ;
+    cw:addressesGap pf:ProficiencyGap_BR_R1_BackupAdministration ;
+    cw:currency "EUR" ;
+    cw:durationDays "30"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 2500.0 .
+
+pf:BR_A2_DRPlanner a owl:NamedIndividual,
+        cw:HiringAction ;
+    rdfs:label "Hire or contract a disaster-recovery planner" ;
+    cw:addressesGap pf:ProficiencyGap_BR_R3_DisasterRecoveryPlanning ;
+    cw:currency "EUR" ;
+    cw:durationDays "120"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 45000.0 .
+
+pf:BR_A3_RecoveryMetrics a owl:NamedIndividual,
+        cw:ProcessImprovementAction ;
+    rdfs:label "Recovery-time measures and competence requirements" ;
+    cw:addressesGap pf:MaturityGap_BackupRecovery ;
+    cw:currency "EUR" ;
+    cw:durationDays "45"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 3000.0 .
+
+pf:BackupRecoveryRisk a owl:NamedIndividual,
+        cw:RiskScenario ;
+    rdfs:label "Failure of backup and recovery" ;
+    cw:affectsAsset pf:BackupInfrastructure ;
+    cw:dependsOnCapability pf:BackupRecovery .
+
+pf:CL_A1_CloudReassessment a owl:NamedIndividual,
+        cw:ReassessmentAction ;
+    rdfs:label "Assess SOC staff on cloud log analysis and configuration review" ;
+    cw:addressesGap pf:EvidenceGap_CL_R1_CloudLogAnalysis,
+        pf:EvidenceGap_CL_R2_CloudConfigurationReview ;
+    cw:currency "EUR" ;
+    cw:durationDays "15"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 1500.0 .
+
+pf:CL_A2_ContainerTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Container security training" ;
+    cw:addressesGap pf:ProficiencyGap_CL_R3_ContainerSecurity ;
+    cw:currency "EUR" ;
+    cw:durationDays "30"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 2500.0 .
+
+pf:CL_A3_MaturityAssessment a owl:NamedIndividual,
+        cw:ReassessmentAction ;
+    rdfs:label "Complete the maturity assessment of cloud monitoring" ;
+    cw:addressesGap pf:MaturityGap_CloudSecurityMonitoring ;
+    cw:currency "EUR" ;
+    cw:durationDays "10"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 1000.0 .
+
+pf:CapabilityGap_BackupRecovery a owl:NamedIndividual,
+        cw:CapabilityGapAssessment ;
+    prov:wasDerivedFrom pf:MaturityGap_BackupRecovery,
+        pf:ProficiencyGap_BR_R1_BackupAdministration,
+        pf:ProficiencyGap_BR_R3_DisasterRecoveryPlanning ;
+    cw:combinedGapScore 0.35 ;
+    cw:comparedMaturity pf:MA_BackupRecovery ;
+    cw:gapCapability pf:BackupRecovery ;
+    cw:gapPriority 0.3325 ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:maturityEvidenceCoverage 1.0 ;
+    cw:maturityGapScore 0.3 ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.3" ;
+    cw:priorityDetermined true ;
+    cw:proficiencyEvidenceCoverage 1.0 ;
+    cw:proficiencyGapScore 0.4 .
+
+pf:CapabilityGap_CloudSecurityMonitoring a owl:NamedIndividual,
+        cw:CapabilityGapAssessment ;
+    prov:wasDerivedFrom pf:EvidenceGap_CL_R1_CloudLogAnalysis,
+        pf:EvidenceGap_CL_R2_CloudConfigurationReview,
+        pf:MaturityGap_CloudSecurityMonitoring,
+        pf:ProficiencyGap_CL_R3_ContainerSecurity ;
+    cw:comparedMaturity pf:MA_CloudSecurityMonitoring ;
+    cw:gapCapability pf:CloudSecurityMonitoring ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:maturityEvidenceCoverage 0.4 ;
+    cw:maturityGapScore 0.5 ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.3" ;
+    cw:priorityDetermined false ;
+    cw:proficiencyEvidenceCoverage 0.2 ;
+    cw:proficiencyGapScore 1.0 .
+
+pf:CapabilityGap_IdentityAccessManagement a owl:NamedIndividual,
+        cw:CapabilityGapAssessment ;
+    prov:wasDerivedFrom pf:MaturityGap_IdentityAccessManagement,
+        pf:ProficiencyGap_IAM_R3_DirectoryAdministration ;
+    cw:combinedGapScore 0.4 ;
+    cw:comparedMaturity pf:MA_IdentityAccessManagement ;
+    cw:gapCapability pf:IdentityAccessManagement ;
+    cw:gapPriority 0.32 ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:maturityEvidenceCoverage 1.0 ;
+    cw:maturityGapScore 0.7 ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.3" ;
+    cw:priorityDetermined true ;
+    cw:proficiencyEvidenceCoverage 1.0 ;
+    cw:proficiencyGapScore 0.1 .
+
+pf:CapabilityGap_SecurityAwareness a owl:NamedIndividual,
+        cw:CapabilityGapAssessment ;
+    prov:wasDerivedFrom pf:MaturityGap_SecurityAwareness,
+        pf:ProficiencyGap_SA_R1_ProgrammeDesign ;
+    cw:combinedGapScore 0.70833 ;
+    cw:comparedMaturity pf:MA_SecurityAwareness ;
+    cw:gapCapability pf:SecurityAwareness ;
+    cw:gapPriority 0.24792 ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:maturityEvidenceCoverage 1.0 ;
+    cw:maturityGapScore 0.75 ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.3" ;
+    cw:priorityDetermined true ;
+    cw:proficiencyEvidenceCoverage 1.0 ;
+    cw:proficiencyGapScore 0.66667 .
+
+pf:CapabilityGap_VulnerabilityManagement a owl:NamedIndividual,
+        cw:CapabilityGapAssessment ;
+    prov:wasDerivedFrom pf:MaturityGap_VulnerabilityManagement,
+        pf:ProficiencyGap_VM_R1_VulnerabilityAssessment,
+        pf:ProficiencyGap_VM_R2_PatchPrioritization ;
+    cw:combinedGapScore 0.5 ;
+    cw:comparedMaturity pf:MA_VulnerabilityManagement ;
+    cw:gapCapability pf:VulnerabilityManagement ;
+    cw:gapPriority 0.425 ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:maturityEvidenceCoverage 1.0 ;
+    cw:maturityGapScore 0.2 ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.3" ;
+    cw:priorityDetermined true ;
+    cw:proficiencyEvidenceCoverage 1.0 ;
+    cw:proficiencyGapScore 0.8 .
+
+pf:CloudSecurityMonitoringRisk a owl:NamedIndividual,
+        cw:RiskScenario ;
+    rdfs:label "Failure of cloud security monitoring" ;
+    cw:affectsAsset pf:CloudTenant ;
+    cw:dependsOnCapability pf:CloudSecurityMonitoring .
+
+pf:Coverage_BR_R2_RecoveryTesting a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_D_RecoveryTesting,
+        pf:CA_E_RecoveryTesting,
+        pf:CA_F_RecoveryTesting ;
+    cw:coverageDeficiency 0.0 ;
+    cw:coverageRequirement pf:BR_R2_RecoveryTesting ;
+    cw:coverageStatus cw:Covered ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee pf:AnalystE .
+
+pf:Coverage_IAM_R1_IdentityGovernance a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_G_IdentityGovernance,
+        pf:CA_H_IdentityGovernance ;
+    cw:coverageDeficiency 0.0 ;
+    cw:coverageRequirement pf:IAM_R1_IdentityGovernance ;
+    cw:coverageStatus cw:Covered ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee pf:AnalystG .
+
+pf:Coverage_IAM_R2_PrivilegedAccess a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_G_PrivilegedAccessManagement,
+        pf:CA_H_PrivilegedAccessManagement ;
+    cw:coverageDeficiency 0.0 ;
+    cw:coverageRequirement pf:IAM_R2_PrivilegedAccess ;
+    cw:coverageStatus cw:Covered ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "2"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee pf:AnalystG,
+        pf:AnalystH .
+
+pf:Coverage_SA_R2_PhishingSimulation a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_I_PhishingSimulation,
+        pf:CA_J_PhishingSimulation ;
+    cw:coverageDeficiency 0.0 ;
+    cw:coverageRequirement pf:SA_R2_PhishingSimulation ;
+    cw:coverageStatus cw:Covered ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee pf:AnalystI .
+
+pf:Coverage_VM_R3_ScannerOperation a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_D_ScannerOperation,
+        pf:CA_E_ScannerOperation,
+        pf:CA_F_ScannerOperation ;
+    cw:coverageDeficiency 0.0 ;
+    cw:coverageRequirement pf:VM_R3_ScannerOperation ;
+    cw:coverageStatus cw:Covered ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "2"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee pf:AnalystD,
+        pf:AnalystE .
+
+pf:IAM_A1_AccessProcedures a owl:NamedIndividual,
+        cw:ProcessImprovementAction ;
+    rdfs:label "Document and review joiner-mover-leaver and access-review procedures" ;
+    cw:addressesGap pf:MaturityGap_IdentityAccessManagement ;
+    cw:currency "EUR" ;
+    cw:durationDays "90"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 7000.0 .
+
+pf:IAM_A2_DirectoryTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Directory administration training" ;
+    cw:addressesGap pf:ProficiencyGap_IAM_R3_DirectoryAdministration ;
+    cw:currency "EUR" ;
+    cw:durationDays "20"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 1500.0 .
+
+pf:IdentityAccessManagementRisk a owl:NamedIndividual,
+        cw:RiskScenario ;
+    rdfs:label "Failure of identity and access management" ;
+    cw:affectsAsset pf:DirectoryService ;
+    cw:dependsOnCapability pf:IdentityAccessManagement .
+
+pf:SA_A1_ProgrammeTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Awareness programme design training" ;
+    cw:addressesGap pf:ProficiencyGap_SA_R1_ProgrammeDesign ;
+    cw:currency "EUR" ;
+    cw:durationDays "15"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 1200.0 .
+
+pf:SA_A2_AwarenessPlan a owl:NamedIndividual,
+        cw:ProcessImprovementAction ;
+    rdfs:label "Plan and resource the awareness programme" ;
+    cw:addressesGap pf:MaturityGap_SecurityAwareness ;
+    cw:currency "EUR" ;
+    cw:durationDays "30"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 1500.0 .
+
+pf:SecurityAwarenessRisk a owl:NamedIndividual,
+        cw:RiskScenario ;
+    rdfs:label "Failure of security awareness" ;
+    cw:affectsAsset pf:StaffEndpoints ;
+    cw:dependsOnCapability pf:SecurityAwareness .
+
+pf:VM_A1_VulnTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Vulnerability-assessment and prioritization training" ;
+    cw:addressesGap pf:ProficiencyGap_VM_R1_VulnerabilityAssessment,
+        pf:ProficiencyGap_VM_R2_PatchPrioritization ;
+    cw:currency "EUR" ;
+    cw:durationDays "60"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 6000.0 .
+
+pf:VM_A2_QualityMeasures a owl:NamedIndividual,
+        cw:ProcessImprovementAction ;
+    rdfs:label "Define remediation quality measures and reviews" ;
+    cw:addressesGap pf:MaturityGap_VulnerabilityManagement ;
+    cw:currency "EUR" ;
+    cw:durationDays "30"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 2000.0 .
+
+pf:VulnerabilityManagementRisk a owl:NamedIndividual,
+        cw:RiskScenario ;
+    rdfs:label "Failure of vulnerability management" ;
+    cw:affectsAsset pf:ServerFleet ;
+    cw:dependsOnCapability pf:VulnerabilityManagement .
+
+ex:A4_EscalationProcedure a owl:NamedIndividual,
+        cw:ProcessImprovementAction ;
+    rdfs:label "Document escalation/reporting procedure and competence-maintenance arrangements" ;
+    cw:addressesGap ex:MaturityGap_IncidentDetection ;
+    cw:currency "EUR" ;
+    cw:durationDays "60"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 4000.0 .
+
+ex:CA_A_Triage a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentTriage ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_Triage a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentTriage ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_Triage a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentTriage ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CR01 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C01 .
+
+ex:CR02 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C02 .
+
+ex:CR03 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C03 .
+
+ex:CR04 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C04 .
+
+ex:CR05 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C05 .
+
+ex:CR06 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C06 .
+
+ex:CR07 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C07 .
+
+ex:CR08 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:PartlyMet ;
+    cw:resultCriterion ex:C08 .
+
+ex:CR09 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C09 .
+
+ex:CR10 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C10 .
+
+ex:Coverage_R1_LogCorrelation a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_LogCorr,
+        ex:CA_B_LogCorr,
+        ex:CA_C_LogCorr ;
+    cw:coverageDeficiency 0.5 ;
+    cw:coverageRequirement ex:R1_LogCorrelation ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee ex:AnalystA .
+
+ex:Coverage_R3_IncidentReporting a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_Reporting,
+        ex:CA_B_Reporting,
+        ex:CA_C_Reporting ;
+    cw:coverageDeficiency 1.0 ;
+    cw:coverageRequirement ex:R3_IncidentReporting ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+ex:Coverage_R4_DetectionRuleTuning a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_Tuning,
+        ex:CA_B_Tuning,
+        ex:CA_C_Tuning ;
+    cw:coverageRequirement ex:R4_DetectionRuleTuning ;
+    cw:coverageStatus cw:Unresolved ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+ex:CriticalityRationale a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Criticality rationale (illustrative)" ;
+    cw:scopeDescription "Stakeholder judgment: detection supports all production monitoring; criticality set to 0.90 on a 0..1 scale." .
+
+ex:LogCorrelationTask a owl:NamedIndividual,
+        cw:TaskType ;
+    rdfs:label "Log correlation" .
+
+ex:MaturityEvidence2026 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Maturity assessment evidence pack, September 2026 (synthetic)" .
+
+ex:SIEMPlatform a owl:NamedIndividual,
+        cw:Technology ;
+    rdfs:label "SIEM platform" .
+
+pf:BackupRecoveryCriticality a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Criticality rationale, Backup and recovery (illustrative)" ;
+    cw:scopeDescription "Recovery from ransomware depends entirely on this capability; criticality 0.95." .
+
+pf:BackupRecovery_CR01 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C01 .
+
+pf:BackupRecovery_CR02 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C02 .
+
+pf:BackupRecovery_CR03 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C03 .
+
+pf:BackupRecovery_CR04 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C04 .
+
+pf:BackupRecovery_CR05 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C05 .
+
+pf:BackupRecovery_CR06 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C06 .
+
+pf:BackupRecovery_CR07 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C07 .
+
+pf:BackupRecovery_CR08 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C08 .
+
+pf:BackupRecovery_CR09 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C09 .
+
+pf:BackupRecovery_CR10 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:PartlyMet ;
+    cw:resultCriterion ex:C10 .
+
+pf:CA_D_RecoveryTesting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:RecoveryTesting ;
+    cw:assessedEmployee pf:AnalystD ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_D_ScannerOperation a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:ScannerOperation ;
+    cw:assessedEmployee pf:AnalystD ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_E_RecoveryTesting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:RecoveryTesting ;
+    cw:assessedEmployee pf:AnalystE ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_E_ScannerOperation a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:ScannerOperation ;
+    cw:assessedEmployee pf:AnalystE ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_F_RecoveryTesting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:RecoveryTesting ;
+    cw:assessedEmployee pf:AnalystF ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_F_ScannerOperation a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:ScannerOperation ;
+    cw:assessedEmployee pf:AnalystF ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_G_IdentityGovernance a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:IdentityGovernance ;
+    cw:assessedEmployee pf:AnalystG ;
+    cw:assessmentCapability pf:IdentityAccessManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_G_PrivilegedAccessManagement a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:PrivilegedAccessManagement ;
+    cw:assessedEmployee pf:AnalystG ;
+    cw:assessmentCapability pf:IdentityAccessManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_H_IdentityGovernance a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:IdentityGovernance ;
+    cw:assessedEmployee pf:AnalystH ;
+    cw:assessmentCapability pf:IdentityAccessManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_H_PrivilegedAccessManagement a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:PrivilegedAccessManagement ;
+    cw:assessedEmployee pf:AnalystH ;
+    cw:assessmentCapability pf:IdentityAccessManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_I_PhishingSimulation a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:PhishingSimulation ;
+    cw:assessedEmployee pf:AnalystI ;
+    cw:assessmentCapability pf:SecurityAwareness ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_J_PhishingSimulation a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:PhishingSimulation ;
+    cw:assessedEmployee pf:AnalystJ ;
+    cw:assessmentCapability pf:SecurityAwareness ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CloudConfigurationReview a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Cloud configuration review" .
+
+pf:CloudSecurityMonitoringCriticality a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Criticality rationale, Cloud security monitoring (illustrative)" ;
+    cw:scopeDescription "Customer-facing services are hosted in the cloud tenant; criticality 0.80." .
+
+pf:CloudSecurityMonitoring_CR01 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C01 .
+
+pf:CloudSecurityMonitoring_CR02 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C02 .
+
+pf:CloudSecurityMonitoring_CR03 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C03 .
+
+pf:CloudSecurityMonitoring_CR04 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C04 .
+
+pf:CloudSecurityMonitoring_CR05 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C05 .
+
+pf:CloudSecurityMonitoring_CR06 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C06 .
+
+pf:CloudSecurityMonitoring_CR07 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C07 .
+
+pf:CloudSecurityMonitoring_CR08 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C08 .
+
+pf:CloudSecurityMonitoring_CR09 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C09 .
+
+pf:CloudSecurityMonitoring_CR10 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C10 .
+
+pf:Coverage_BR_R1_BackupAdministration a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_D_BackupAdministration,
+        pf:CA_E_BackupAdministration,
+        pf:CA_F_BackupAdministration ;
+    cw:coverageDeficiency 0.5 ;
+    cw:coverageRequirement pf:BR_R1_BackupAdministration ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee pf:AnalystE .
+
+pf:Coverage_BR_R3_DisasterRecoveryPlanning a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_D_DisasterRecoveryPlanning,
+        pf:CA_E_DisasterRecoveryPlanning,
+        pf:CA_F_DisasterRecoveryPlanning ;
+    cw:coverageDeficiency 1.0 ;
+    cw:coverageRequirement pf:BR_R3_DisasterRecoveryPlanning ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+pf:Coverage_CL_R1_CloudLogAnalysis a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_A_CloudLogAnalysis ;
+    cw:coverageRequirement pf:CL_R1_CloudLogAnalysis ;
+    cw:coverageStatus cw:Unresolved ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee ex:AnalystA .
+
+pf:Coverage_CL_R2_CloudConfigurationReview a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    cw:coverageRequirement pf:CL_R2_CloudConfigurationReview ;
+    cw:coverageStatus cw:Unresolved ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+pf:Coverage_CL_R3_ContainerSecurity a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_A_ContainerSecurity,
+        pf:CA_B_ContainerSecurity,
+        pf:CA_C_ContainerSecurity ;
+    cw:coverageDeficiency 1.0 ;
+    cw:coverageRequirement pf:CL_R3_ContainerSecurity ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+pf:Coverage_IAM_R3_DirectoryAdministration a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_G_DirectoryAdministration,
+        pf:CA_H_DirectoryAdministration ;
+    cw:coverageDeficiency 0.5 ;
+    cw:coverageRequirement pf:IAM_R3_DirectoryAdministration ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee pf:AnalystG .
+
+pf:Coverage_SA_R1_ProgrammeDesign a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_I_AwarenessProgrammeDesign,
+        pf:CA_J_AwarenessProgrammeDesign ;
+    cw:coverageDeficiency 1.0 ;
+    cw:coverageRequirement pf:SA_R1_ProgrammeDesign ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+pf:Coverage_VM_R1_VulnerabilityAssessment a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_D_VulnerabilityAssessment,
+        pf:CA_E_VulnerabilityAssessment,
+        pf:CA_F_VulnerabilityAssessment ;
+    cw:coverageDeficiency 1.0 ;
+    cw:coverageRequirement pf:VM_R1_VulnerabilityAssessment ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+pf:Coverage_VM_R2_PatchPrioritization a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom pf:CA_D_RiskBasedPatchPrioritization,
+        pf:CA_E_RiskBasedPatchPrioritization,
+        pf:CA_F_RiskBasedPatchPrioritization ;
+    cw:coverageDeficiency 1.0 ;
+    cw:coverageRequirement pf:VM_R2_PatchPrioritization ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+pf:IdentityAccessManagementCriticality a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Criticality rationale, Identity and access management (illustrative)" ;
+    cw:scopeDescription "Compromise of privileged identities affects all systems; criticality 0.80." .
+
+pf:IdentityAccessManagement_CR01 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C01 .
+
+pf:IdentityAccessManagement_CR02 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C02 .
+
+pf:IdentityAccessManagement_CR03 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C03 .
+
+pf:IdentityAccessManagement_CR04 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C04 .
+
+pf:IdentityAccessManagement_CR05 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C05 .
+
+pf:IdentityAccessManagement_CR06 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C06 .
+
+pf:IdentityAccessManagement_CR07 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C07 .
+
+pf:IdentityAccessManagement_CR08 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C08 .
+
+pf:IdentityAccessManagement_CR09 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:PartlyMet ;
+    cw:resultCriterion ex:C09 .
+
+pf:IdentityAccessManagement_CR10 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:PartlyMet ;
+    cw:resultCriterion ex:C10 .
+
+pf:SecurityAwarenessCriticality a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Criticality rationale, Security awareness (illustrative)" ;
+    cw:scopeDescription "Awareness reduces phishing exposure but other controls compensate; criticality 0.35." .
+
+pf:SecurityAwareness_CR01 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C01 .
+
+pf:SecurityAwareness_CR02 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C02 .
+
+pf:SecurityAwareness_CR03 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C03 .
+
+pf:SecurityAwareness_CR04 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C04 .
+
+pf:VulnerabilityManagementCriticality a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Criticality rationale, Vulnerability management (illustrative)" ;
+    cw:scopeDescription "Unpatched internet-facing servers are the most likely initial access path; criticality 0.85." .
+
+pf:VulnerabilityManagement_CR01 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C01 .
+
+pf:VulnerabilityManagement_CR02 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C02 .
+
+pf:VulnerabilityManagement_CR03 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C03 .
+
+pf:VulnerabilityManagement_CR04 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C04 .
+
+pf:VulnerabilityManagement_CR05 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C05 .
+
+pf:VulnerabilityManagement_CR06 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C06 .
+
+pf:VulnerabilityManagement_CR07 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C07 .
+
+pf:VulnerabilityManagement_CR08 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C08 .
+
+pf:VulnerabilityManagement_CR09 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C09 .
+
+pf:VulnerabilityManagement_CR10 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C10 .
+
+ex:CA_A_LogCorr a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:LogCorrelation ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_A_Reporting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentReporting ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_A_Tuning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2024-05-20T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:DetectionRuleTuning ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2024 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_LogCorr a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:LogCorrelation ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_Reporting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentReporting ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_Tuning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2024-05-20T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:DetectionRuleTuning ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2024 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_LogCorr a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:LogCorrelation ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_Reporting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentReporting ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_Tuning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2024-05-20T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:DetectionRuleTuning ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2024 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:EvidenceGap_R4_DetectionRuleTuning a owl:NamedIndividual,
+        cw:EvidenceGap ;
+    prov:wasDerivedFrom ex:Coverage_R4_DetectionRuleTuning ;
+    cw:comparedAssessment ex:CA_A_Tuning,
+        ex:CA_B_Tuning,
+        ex:CA_C_Tuning ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapRequirement ex:R4_DetectionRuleTuning ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+ex:MA_IncidentDetection a owl:NamedIndividual,
+        cw:MaturityAssessment ;
+    rdfs:label "Maturity assessment of incident detection" ;
+    cw:assessedAt "2026-09-30T09:00:00+00:00"^^xsd:dateTime ;
+    cw:hasCriterionResult ex:CR01,
+        ex:CR02,
+        ex:CR03,
+        ex:CR04,
+        ex:CR05,
+        ex:CR06,
+        ex:CR07,
+        ex:CR08,
+        ex:CR09,
+        ex:CR10 ;
+    cw:hasEvidence ex:MaturityEvidence2026 ;
+    cw:maturityCapability ex:IncidentDetection ;
+    cw:methodVersion "CARISMA maturity rubric v0.1" ;
+    cw:observedMaturity cw:ML2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:MaturityGap_IncidentDetection a owl:NamedIndividual,
+        cw:MaturityGap ;
+    cw:comparedMaturity ex:MA_IncidentDetection ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:unmetCriterion ex:C06,
+        ex:C07,
+        ex:C08 .
+
+ex:Monitoring a owl:NamedIndividual,
+        cw:TaskType ;
+    rdfs:label "Security monitoring" .
+
+ex:ProductionSIEM a owl:NamedIndividual,
+        cw:Asset ;
+    rdfs:label "Production SIEM" ;
+    cw:usesTechnology ex:SIEMPlatform .
+
+ex:ProficiencyGap_R1_LogCorrelation a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom ex:Coverage_R1_LogCorrelation ;
+    cw:comparedAssessment ex:CA_A_LogCorr,
+        ex:CA_B_LogCorr,
+        ex:CA_C_LogCorr ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapRequirement ex:R1_LogCorrelation ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+ex:ProficiencyGap_R3_IncidentReporting a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom ex:Coverage_R3_IncidentReporting ;
+    cw:comparedAssessment ex:CA_A_Reporting,
+        ex:CA_B_Reporting,
+        ex:CA_C_Reporting ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapRequirement ex:R3_IncidentReporting ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+ex:R2_IncidentTriage a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Incident triage at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:IncidentTriage ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+ex:TriageTask a owl:NamedIndividual,
+        cw:TaskType ;
+    rdfs:label "Incident triage" .
+
+pf:BR_R2_RecoveryTesting a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Recovery testing at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:RecoveryTesting ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:BackupRecovery ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:BackupInfrastructure a owl:NamedIndividual,
+        cw:Asset ;
+    rdfs:label "Backup infrastructure" .
+
+pf:CA_A_CloudLogAnalysis a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:CloudLogAnalysis ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability pf:CloudSecurityMonitoring ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_A_ContainerSecurity a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:ContainerSecurity ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability pf:CloudSecurityMonitoring ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_B_ContainerSecurity a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:ContainerSecurity ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability pf:CloudSecurityMonitoring ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_C_ContainerSecurity a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:ContainerSecurity ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability pf:CloudSecurityMonitoring ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_D_BackupAdministration a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:BackupAdministration ;
+    cw:assessedEmployee pf:AnalystD ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_D_DisasterRecoveryPlanning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:DisasterRecoveryPlanning ;
+    cw:assessedEmployee pf:AnalystD ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_D_RiskBasedPatchPrioritization a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:RiskBasedPatchPrioritization ;
+    cw:assessedEmployee pf:AnalystD ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_D_VulnerabilityAssessment a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:VulnerabilityAssessment ;
+    cw:assessedEmployee pf:AnalystD ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_E_BackupAdministration a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:BackupAdministration ;
+    cw:assessedEmployee pf:AnalystE ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_E_DisasterRecoveryPlanning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:DisasterRecoveryPlanning ;
+    cw:assessedEmployee pf:AnalystE ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_E_RiskBasedPatchPrioritization a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:RiskBasedPatchPrioritization ;
+    cw:assessedEmployee pf:AnalystE ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_E_VulnerabilityAssessment a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:VulnerabilityAssessment ;
+    cw:assessedEmployee pf:AnalystE ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_F_BackupAdministration a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:BackupAdministration ;
+    cw:assessedEmployee pf:AnalystF ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_F_DisasterRecoveryPlanning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:DisasterRecoveryPlanning ;
+    cw:assessedEmployee pf:AnalystF ;
+    cw:assessmentCapability pf:BackupRecovery ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_F_RiskBasedPatchPrioritization a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:RiskBasedPatchPrioritization ;
+    cw:assessedEmployee pf:AnalystF ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_F_VulnerabilityAssessment a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:VulnerabilityAssessment ;
+    cw:assessedEmployee pf:AnalystF ;
+    cw:assessmentCapability pf:VulnerabilityManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_G_DirectoryAdministration a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:DirectoryAdministration ;
+    cw:assessedEmployee pf:AnalystG ;
+    cw:assessmentCapability pf:IdentityAccessManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_H_DirectoryAdministration a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:DirectoryAdministration ;
+    cw:assessedEmployee pf:AnalystH ;
+    cw:assessmentCapability pf:IdentityAccessManagement ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_I_AwarenessProgrammeDesign a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:AwarenessProgrammeDesign ;
+    cw:assessedEmployee pf:AnalystI ;
+    cw:assessmentCapability pf:SecurityAwareness ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CA_J_AwarenessProgrammeDesign a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency pf:AwarenessProgrammeDesign ;
+    cw:assessedEmployee pf:AnalystJ ;
+    cw:assessmentCapability pf:SecurityAwareness ;
+    cw:hasEvidence pf:PortfolioAssessments2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:CloudLogAnalysis a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Cloud log analysis" .
+
+pf:CloudTenant a owl:NamedIndividual,
+        cw:Asset ;
+    rdfs:label "Production cloud tenant" .
+
+pf:DirectoryService a owl:NamedIndividual,
+        cw:Asset ;
+    rdfs:label "Enterprise directory service" .
+
+pf:EvidenceGap_CL_R1_CloudLogAnalysis a owl:NamedIndividual,
+        cw:EvidenceGap ;
+    prov:wasDerivedFrom pf:Coverage_CL_R1_CloudLogAnalysis ;
+    cw:comparedAssessment pf:CA_A_CloudLogAnalysis ;
+    cw:gapCapability pf:CloudSecurityMonitoring ;
+    cw:gapRequirement pf:CL_R1_CloudLogAnalysis ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:EvidenceGap_CL_R2_CloudConfigurationReview a owl:NamedIndividual,
+        cw:EvidenceGap ;
+    prov:wasDerivedFrom pf:Coverage_CL_R2_CloudConfigurationReview ;
+    cw:gapCapability pf:CloudSecurityMonitoring ;
+    cw:gapRequirement pf:CL_R2_CloudConfigurationReview ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:IAM_R1_IdentityGovernance a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Identity governance at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:IdentityGovernance ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:IdentityAccessManagement ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:IAM_R2_PrivilegedAccess a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Privileged access management at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:PrivilegedAccessManagement ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:IdentityAccessManagement ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:MA_BackupRecovery a owl:NamedIndividual,
+        cw:MaturityAssessment ;
+    rdfs:label "Maturity assessment of backup and recovery" ;
+    cw:assessedAt "2026-09-30T09:00:00+00:00"^^xsd:dateTime ;
+    cw:hasCriterionResult pf:BackupRecovery_CR01,
+        pf:BackupRecovery_CR02,
+        pf:BackupRecovery_CR03,
+        pf:BackupRecovery_CR04,
+        pf:BackupRecovery_CR05,
+        pf:BackupRecovery_CR06,
+        pf:BackupRecovery_CR07,
+        pf:BackupRecovery_CR08,
+        pf:BackupRecovery_CR09,
+        pf:BackupRecovery_CR10 ;
+    cw:hasEvidence pf:PortfolioMaturityEvidence2026 ;
+    cw:maturityCapability pf:BackupRecovery ;
+    cw:methodVersion "CARISMA maturity rubric v0.1" ;
+    cw:observedMaturity cw:ML2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:MA_CloudSecurityMonitoring a owl:NamedIndividual,
+        cw:MaturityAssessment ;
+    rdfs:label "Maturity assessment of cloud security monitoring" ;
+    cw:assessedAt "2026-09-30T09:00:00+00:00"^^xsd:dateTime ;
+    cw:hasCriterionResult pf:CloudSecurityMonitoring_CR01,
+        pf:CloudSecurityMonitoring_CR02,
+        pf:CloudSecurityMonitoring_CR03,
+        pf:CloudSecurityMonitoring_CR04,
+        pf:CloudSecurityMonitoring_CR05,
+        pf:CloudSecurityMonitoring_CR06,
+        pf:CloudSecurityMonitoring_CR07,
+        pf:CloudSecurityMonitoring_CR08,
+        pf:CloudSecurityMonitoring_CR09,
+        pf:CloudSecurityMonitoring_CR10 ;
+    cw:hasEvidence pf:PortfolioMaturityEvidence2026 ;
+    cw:maturityCapability pf:CloudSecurityMonitoring ;
+    cw:methodVersion "CARISMA maturity rubric v0.1" ;
+    cw:observedMaturity cw:ML1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:MA_IdentityAccessManagement a owl:NamedIndividual,
+        cw:MaturityAssessment ;
+    rdfs:label "Maturity assessment of identity and access management" ;
+    cw:assessedAt "2026-09-30T09:00:00+00:00"^^xsd:dateTime ;
+    cw:hasCriterionResult pf:IdentityAccessManagement_CR01,
+        pf:IdentityAccessManagement_CR02,
+        pf:IdentityAccessManagement_CR03,
+        pf:IdentityAccessManagement_CR04,
+        pf:IdentityAccessManagement_CR05,
+        pf:IdentityAccessManagement_CR06,
+        pf:IdentityAccessManagement_CR07,
+        pf:IdentityAccessManagement_CR08,
+        pf:IdentityAccessManagement_CR09,
+        pf:IdentityAccessManagement_CR10 ;
+    cw:hasEvidence pf:PortfolioMaturityEvidence2026 ;
+    cw:maturityCapability pf:IdentityAccessManagement ;
+    cw:methodVersion "CARISMA maturity rubric v0.1" ;
+    cw:observedMaturity cw:ML1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:MA_SecurityAwareness a owl:NamedIndividual,
+        cw:MaturityAssessment ;
+    rdfs:label "Maturity assessment of security awareness" ;
+    cw:assessedAt "2026-09-30T09:00:00+00:00"^^xsd:dateTime ;
+    cw:hasCriterionResult pf:SecurityAwareness_CR01,
+        pf:SecurityAwareness_CR02,
+        pf:SecurityAwareness_CR03,
+        pf:SecurityAwareness_CR04 ;
+    cw:hasEvidence pf:PortfolioMaturityEvidence2026 ;
+    cw:maturityCapability pf:SecurityAwareness ;
+    cw:methodVersion "CARISMA maturity rubric v0.1" ;
+    cw:observedMaturity cw:ML1 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:MA_VulnerabilityManagement a owl:NamedIndividual,
+        cw:MaturityAssessment ;
+    rdfs:label "Maturity assessment of vulnerability management" ;
+    cw:assessedAt "2026-09-30T09:00:00+00:00"^^xsd:dateTime ;
+    cw:hasCriterionResult pf:VulnerabilityManagement_CR01,
+        pf:VulnerabilityManagement_CR02,
+        pf:VulnerabilityManagement_CR03,
+        pf:VulnerabilityManagement_CR04,
+        pf:VulnerabilityManagement_CR05,
+        pf:VulnerabilityManagement_CR06,
+        pf:VulnerabilityManagement_CR07,
+        pf:VulnerabilityManagement_CR08,
+        pf:VulnerabilityManagement_CR09,
+        pf:VulnerabilityManagement_CR10 ;
+    cw:hasEvidence pf:PortfolioMaturityEvidence2026 ;
+    cw:maturityCapability pf:VulnerabilityManagement ;
+    cw:methodVersion "CARISMA maturity rubric v0.1" ;
+    cw:observedMaturity cw:ML2 ;
+    cw:reviewStatus cw:Accepted .
+
+pf:MaturityGap_BackupRecovery a owl:NamedIndividual,
+        cw:MaturityGap ;
+    cw:comparedMaturity pf:MA_BackupRecovery ;
+    cw:gapCapability pf:BackupRecovery ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:unmetCriterion ex:C08,
+        ex:C09,
+        ex:C10 .
+
+pf:MaturityGap_CloudSecurityMonitoring a owl:NamedIndividual,
+        cw:MaturityGap ;
+    cw:comparedMaturity pf:MA_CloudSecurityMonitoring ;
+    cw:gapCapability pf:CloudSecurityMonitoring ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:unmetCriterion ex:C03,
+        ex:C04 .
+
+pf:MaturityGap_IdentityAccessManagement a owl:NamedIndividual,
+        cw:MaturityGap ;
+    cw:comparedMaturity pf:MA_IdentityAccessManagement ;
+    cw:gapCapability pf:IdentityAccessManagement ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:unmetCriterion ex:C04,
+        ex:C05,
+        ex:C06,
+        ex:C07,
+        ex:C08,
+        ex:C09,
+        ex:C10 .
+
+pf:MaturityGap_SecurityAwareness a owl:NamedIndividual,
+        cw:MaturityGap ;
+    cw:comparedMaturity pf:MA_SecurityAwareness ;
+    cw:gapCapability pf:SecurityAwareness ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:unmetCriterion ex:C02,
+        ex:C03,
+        ex:C04 .
+
+pf:MaturityGap_VulnerabilityManagement a owl:NamedIndividual,
+        cw:MaturityGap ;
+    cw:comparedMaturity pf:MA_VulnerabilityManagement ;
+    cw:gapCapability pf:VulnerabilityManagement ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:unmetCriterion ex:C09,
+        ex:C10 .
+
+pf:ProficiencyGap_BR_R1_BackupAdministration a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom pf:Coverage_BR_R1_BackupAdministration ;
+    cw:comparedAssessment pf:CA_D_BackupAdministration,
+        pf:CA_E_BackupAdministration,
+        pf:CA_F_BackupAdministration ;
+    cw:gapCapability pf:BackupRecovery ;
+    cw:gapRequirement pf:BR_R1_BackupAdministration ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:ProficiencyGap_BR_R3_DisasterRecoveryPlanning a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom pf:Coverage_BR_R3_DisasterRecoveryPlanning ;
+    cw:comparedAssessment pf:CA_D_DisasterRecoveryPlanning,
+        pf:CA_E_DisasterRecoveryPlanning,
+        pf:CA_F_DisasterRecoveryPlanning ;
+    cw:gapCapability pf:BackupRecovery ;
+    cw:gapRequirement pf:BR_R3_DisasterRecoveryPlanning ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:ProficiencyGap_CL_R3_ContainerSecurity a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom pf:Coverage_CL_R3_ContainerSecurity ;
+    cw:comparedAssessment pf:CA_A_ContainerSecurity,
+        pf:CA_B_ContainerSecurity,
+        pf:CA_C_ContainerSecurity ;
+    cw:gapCapability pf:CloudSecurityMonitoring ;
+    cw:gapRequirement pf:CL_R3_ContainerSecurity ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:ProficiencyGap_IAM_R3_DirectoryAdministration a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom pf:Coverage_IAM_R3_DirectoryAdministration ;
+    cw:comparedAssessment pf:CA_G_DirectoryAdministration,
+        pf:CA_H_DirectoryAdministration ;
+    cw:gapCapability pf:IdentityAccessManagement ;
+    cw:gapRequirement pf:IAM_R3_DirectoryAdministration ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:ProficiencyGap_SA_R1_ProgrammeDesign a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom pf:Coverage_SA_R1_ProgrammeDesign ;
+    cw:comparedAssessment pf:CA_I_AwarenessProgrammeDesign,
+        pf:CA_J_AwarenessProgrammeDesign ;
+    cw:gapCapability pf:SecurityAwareness ;
+    cw:gapRequirement pf:SA_R1_ProgrammeDesign ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:ProficiencyGap_VM_R1_VulnerabilityAssessment a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom pf:Coverage_VM_R1_VulnerabilityAssessment ;
+    cw:comparedAssessment pf:CA_D_VulnerabilityAssessment,
+        pf:CA_E_VulnerabilityAssessment,
+        pf:CA_F_VulnerabilityAssessment ;
+    cw:gapCapability pf:VulnerabilityManagement ;
+    cw:gapRequirement pf:VM_R1_VulnerabilityAssessment ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:ProficiencyGap_VM_R2_PatchPrioritization a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom pf:Coverage_VM_R2_PatchPrioritization ;
+    cw:comparedAssessment pf:CA_D_RiskBasedPatchPrioritization,
+        pf:CA_E_RiskBasedPatchPrioritization,
+        pf:CA_F_RiskBasedPatchPrioritization ;
+    cw:gapCapability pf:VulnerabilityManagement ;
+    cw:gapRequirement pf:VM_R2_PatchPrioritization ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+pf:SA_R2_PhishingSimulation a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Phishing simulation at P2, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:PhishingSimulation ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P2 ;
+    cw:requirementCapability pf:SecurityAwareness ;
+    cw:requirementSourceProfile ex:CybersecurityEducator ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+pf:ServerFleet a owl:NamedIndividual,
+        cw:Asset ;
+    rdfs:label "Production server fleet" .
+
+pf:StaffEndpoints a owl:NamedIndividual,
+        cw:Asset ;
+    rdfs:label "Staff endpoints and mailboxes" .
+
+pf:VM_R3_ScannerOperation a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Vulnerability scanner operation at P2, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:ScannerOperation ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P2 ;
+    cw:requirementCapability pf:VulnerabilityManagement ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+ex:PracticalExercise2024 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Practical detection-engineering exercise, May 2024 (synthetic)" .
+
+ex:R1_LogCorrelation a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Log correlation at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:LogCorrelation ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+ex:R3_IncidentReporting a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Incident reporting at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:IncidentReporting ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+ex:R4_DetectionRuleTuning a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Detection-rule tuning at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:DetectionRuleTuning ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+pf:AwarenessProgrammeDesign a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Awareness programme design" .
+
+pf:BR_R1_BackupAdministration a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Backup administration at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:BackupAdministration ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:BackupRecovery ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:BR_R3_DisasterRecoveryPlanning a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Disaster-recovery planning at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:DisasterRecoveryPlanning ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:BackupRecovery ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+pf:CL_R1_CloudLogAnalysis a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Cloud log analysis at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:CloudLogAnalysis ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:CloudSecurityMonitoring ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:CL_R2_CloudConfigurationReview a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Cloud configuration review at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:CloudConfigurationReview ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:CloudSecurityMonitoring ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:CL_R3_ContainerSecurity a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Container security at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:ContainerSecurity ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:CloudSecurityMonitoring ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+pf:DirectoryAdministration a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Directory administration" .
+
+pf:IAM_R3_DirectoryAdministration a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Directory administration at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:DirectoryAdministration ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:IdentityAccessManagement ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+pf:IdentityGovernance a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Identity governance" .
+
+pf:PhishingSimulation a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Phishing simulation" .
+
+pf:PrivilegedAccessManagement a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Privileged access management" .
+
+pf:SA_R1_ProgrammeDesign a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Awareness programme design at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:AwarenessProgrammeDesign ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:SecurityAwareness ;
+    cw:requirementSourceProfile ex:CybersecurityEducator ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:VM_R1_VulnerabilityAssessment a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Vulnerability assessment at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:VulnerabilityAssessment ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:VulnerabilityManagement ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+pf:VM_R2_PatchPrioritization a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Risk-based patch prioritization at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency pf:RiskBasedPatchPrioritization ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability pf:VulnerabilityManagement ;
+    cw:requirementSourceProfile ex:CybersecurityImplementer ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+ex:CybersecurityEducator a owl:NamedIndividual,
+        cw:RoleProfile ;
+    rdfs:label "Cybersecurity Educator (ECSF)" .
+
+ex:LocalProficiencyScale a owl:NamedIndividual,
+        cw:ProficiencyScale ;
+    rdfs:label "Local practical proficiency rubric" ;
+    cw:sourceVersion "Illustrative rubric v0.1" .
+
+pf:AnalystJ a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst J" .
+
+pf:BackupAdministration a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Backup administration" .
+
+pf:ContainerSecurity a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Container security" .
+
+pf:DisasterRecoveryPlanning a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Disaster-recovery planning" .
+
+pf:GRCTeam a owl:NamedIndividual,
+        cw:OrganizationalUnit ;
+    rdfs:label "Governance, Risk and Compliance team" .
+
+pf:IAMTeam a owl:NamedIndividual,
+        cw:OrganizationalUnit ;
+    rdfs:label "Identity and Access Management team" .
+
+pf:RecoveryTesting a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Recovery testing" .
+
+pf:RiskBasedPatchPrioritization a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Risk-based patch prioritization" .
+
+pf:ScannerOperation a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Vulnerability scanner operation" .
+
+pf:VulnerabilityAssessment a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Vulnerability assessment" .
+
+ex:DetectionRuleTuning a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Detection-rule tuning" .
+
+ex:IncidentReporting a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Incident reporting" .
+
+ex:IncidentTriage a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Incident triage" .
+
+ex:LogCorrelation a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Log correlation" .
+
+pf:AnalystI a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst I" .
+
+pf:PortfolioMaturityEvidence2026 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Maturity evidence packs, September 2026 (synthetic)" .
+
+ex:C01 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C01 Capability responsibilities assigned" ;
+    cw:criterionDimension "responsibility and resourcing" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:C05 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C05 Documented core procedure in use" ;
+    cw:criterionDimension "process definition" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:SOC a owl:NamedIndividual,
+        cw:OrganizationalUnit ;
+    rdfs:label "Security Operations Centre" .
+
+pf:AnalystH a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst H" .
+
+pf:ITOperations a owl:NamedIndividual,
+        cw:OrganizationalUnit ;
+    rdfs:label "IT Operations" .
+
+ex:C02 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C02 Capability resources allocated" ;
+    cw:criterionDimension "responsibility and resourcing" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:C06 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C06 Documented escalation and reporting procedure" ;
+    cw:criterionDimension "process definition" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:C07 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C07 Arrangements for maintaining staff competence" ;
+    cw:criterionDimension "workforce development and continuity" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:AnalystC a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst C" .
+
+ex:C03 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C03 Recurring activities planned" ;
+    cw:criterionDimension "process definition" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:C08 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C08 Explicit competence requirements maintained" ;
+    cw:criterionDimension "workforce development and continuity" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:C09 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C09 Quality measures defined" ;
+    cw:criterionDimension "performance measurement" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:C10 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C10 Lessons learned reviewed" ;
+    cw:criterionDimension "continuous improvement" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+pf:AnalystF a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst F" .
+
+pf:AnalystG a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst G" .
+
+ex:AnalystB a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst B" .
+
+ex:C04 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C04 Supervisory review of work" ;
+    cw:criterionDimension "performance measurement" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:P1 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P1 - basic" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "1"^^xsd:nonNegativeInteger .
+
+ex:PracticalExercise2026 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Practical SOC exercise, September 2026 (synthetic)" .
+
+pf:AnalystD a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst D" .
+
+ex:CyberIncidentResponder a owl:NamedIndividual,
+        cw:RoleProfile ;
+    rdfs:label "Cyber Incident Responder (ECSF)" ;
+    cw:profileCompetency ex:DetectionRuleTuning,
+        ex:IncidentReporting,
+        ex:IncidentTriage,
+        ex:LogCorrelation ;
+    cw:profileTask ex:Monitoring,
+        ex:TriageTask .
+
+pf:AnalystE a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst E" .
+
+pf:SecurityAwareness a owl:NamedIndividual,
+        cw:OrganizationalCapability ;
+    rdfs:label "Security awareness" ;
+    cw:capabilityCriticality 0.35 ;
+    cw:capabilityUnit pf:GRCTeam ;
+    cw:hasEvidence pf:SecurityAwarenessCriticality ;
+    cw:hasRequirement pf:SA_R1_ProgrammeDesign,
+        pf:SA_R2_PhishingSimulation ;
+    cw:supportsAsset pf:StaffEndpoints ;
+    cw:targetMaturity cw:ML2 .
+
+ex:AnalystA a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst A" .
+
+ex:CybersecurityImplementer a owl:NamedIndividual,
+        cw:RoleProfile ;
+    rdfs:label "Cybersecurity Implementer (ECSF)" .
+
+pf:CloudSecurityMonitoring a owl:NamedIndividual,
+        cw:OrganizationalCapability ;
+    rdfs:label "Cloud security monitoring" ;
+    cw:capabilityCriticality 0.80 ;
+    cw:capabilityUnit ex:SOC ;
+    cw:hasEvidence pf:CloudSecurityMonitoringCriticality ;
+    cw:hasRequirement pf:CL_R1_CloudLogAnalysis,
+        pf:CL_R2_CloudConfigurationReview,
+        pf:CL_R3_ContainerSecurity ;
+    cw:supportsAsset pf:CloudTenant ;
+    cw:targetMaturity cw:ML3 .
+
+pf:IdentityAccessManagement a owl:NamedIndividual,
+        cw:OrganizationalCapability ;
+    rdfs:label "Identity and access management" ;
+    cw:capabilityCriticality 0.80 ;
+    cw:capabilityUnit pf:IAMTeam ;
+    cw:hasEvidence pf:IdentityAccessManagementCriticality ;
+    cw:hasRequirement pf:IAM_R1_IdentityGovernance,
+        pf:IAM_R2_PrivilegedAccess,
+        pf:IAM_R3_DirectoryAdministration ;
+    cw:supportsAsset pf:DirectoryService ;
+    cw:targetMaturity cw:ML3 .
+
+ex:RequirementReview a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Expert requirement review (illustrative)" ;
+    cw:scopeDescription "Synthetic expert-approved requirements; no claim of verbatim ECSF thresholds." .
+
+pf:BackupRecovery a owl:NamedIndividual,
+        cw:OrganizationalCapability ;
+    rdfs:label "Backup and recovery" ;
+    cw:capabilityCriticality 0.95 ;
+    cw:capabilityUnit pf:ITOperations ;
+    cw:hasEvidence pf:BackupRecoveryCriticality ;
+    cw:hasRequirement pf:BR_R1_BackupAdministration,
+        pf:BR_R2_RecoveryTesting,
+        pf:BR_R3_DisasterRecoveryPlanning ;
+    cw:supportsAsset pf:BackupInfrastructure ;
+    cw:targetMaturity cw:ML3 .
+
+pf:VulnerabilityManagement a owl:NamedIndividual,
+        cw:OrganizationalCapability ;
+    rdfs:label "Vulnerability management" ;
+    cw:capabilityCriticality 0.85 ;
+    cw:capabilityUnit pf:ITOperations ;
+    cw:hasEvidence pf:VulnerabilityManagementCriticality ;
+    cw:hasRequirement pf:VM_R1_VulnerabilityAssessment,
+        pf:VM_R2_PatchPrioritization,
+        pf:VM_R3_ScannerOperation ;
+    cw:supportsAsset pf:ServerFleet ;
+    cw:targetMaturity cw:ML3 .
+
+ex:IncidentDetection a owl:NamedIndividual,
+        cw:OrganizationalCapability ;
+    rdfs:label "Incident detection" ;
+    cw:capabilityCriticality 0.90 ;
+    cw:capabilityUnit ex:SOC ;
+    cw:hasEvidence ex:CriticalityRationale ;
+    cw:hasRequirement ex:R1_LogCorrelation,
+        ex:R2_IncidentTriage,
+        ex:R3_IncidentReporting,
+        ex:R4_DetectionRuleTuning ;
+    cw:performsTaskType ex:LogCorrelationTask,
+        ex:Monitoring,
+        ex:TriageTask ;
+    cw:supportsAsset ex:ProductionSIEM ;
+    cw:targetMaturity cw:ML3 .
+
+ex:P2 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P2 - intermediate" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "2"^^xsd:nonNegativeInteger .
+
+ex:P3 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P3 - proficient" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "3"^^xsd:nonNegativeInteger .
+
+pf:PortfolioAssessments2026 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Practical assessments, September 2026 (synthetic)" .
+
+ex:Snapshot2026Q4 a owl:NamedIndividual,
+        cw:AssessmentSnapshot ;
+    rdfs:label "Assessment snapshot 2026-10-04" ;
+    cw:alpha 0.5 ;
+    cw:assessedAt "2026-10-04T09:00:00+00:00"^^xsd:dateTime ;
+    cw:evidenceMaxAgeDays "365"^^xsd:nonNegativeInteger ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.2" ;
+    cw:minMaturityEvidenceCoverage 0.8 ;
+    cw:minProficiencyEvidenceCoverage 0.8 ;
+    cw:scopeDescription "All SOC staff assigned to incident detection are included in the inventory. Parameters are illustrative study assumptions, not recommended defaults." ;
+    cw:snapshotUnit ex:SOC,
+        pf:GRCTeam,
+        pf:IAMTeam,
+        pf:ITOperations ;
+    cw:workforceInventoryComplete true .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( ex:AnalystA ex:AnalystB ex:AnalystC pf:AnalystD pf:AnalystE pf:AnalystF pf:AnalystG pf:AnalystH pf:AnalystI pf:AnalystJ ) .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( ex:AnalystA ex:AnalystB ex:AnalystC ) .
+

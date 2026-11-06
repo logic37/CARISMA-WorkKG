@@ -1,0 +1,1300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:cw="https://ict.ihu.gr/carisma-workkg#"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb50">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#assessedCompetency"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#MaturityGap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb71"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb72"/>
+    <rdfs:label>MaturityGap</rdfs:label>
+    <rdfs:comment>A shortfall against a capability maturity target, traceable to the unmet criteria; not an employee score.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#proficiencyGapScore">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>proficiencyGapScore</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#coverageRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>coverageRequirement</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#OutsourcingAction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:label>OutsourcingAction</rdfs:label>
+    <rdfs:comment>A proposed external-service intervention.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ReviewStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ReviewStatus</rdfs:label>
+    <rdfs:comment>Closed vocabulary for the review state of a requirement, assessment or mapping.</rdfs:comment>
+    <owl:equivalentClass rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#criterionStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>criterionStatus</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ML1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+    <rdfs:label>1 - Initial</rdfs:label>
+    <cw:levelModel rdf:resource="https://ict.ihu.gr/carisma-workkg#CarismaMaturityRubric"/>
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</cw:ordinalRank>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb5">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Rejected"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CompetencyConcept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label>CompetencyConcept</rdfs:label>
+    <rdfs:comment>Reusable competence vocabulary item, not an employee competence assertion.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#affectsAsset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>affectsAsset</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RiskScenario"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Evidence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:label>Evidence</rdfs:label>
+    <rdfs:comment>Source document, assessment record or observation supporting a claim.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CriterionResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb42"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb43"/>
+    <rdfs:label>CriterionResult</rdfs:label>
+    <rdfs:comment>The recorded result (met, partly met, not met, not assessed) of one criterion within one maturity assessment.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#NotMet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionStatus"/>
+    <rdfs:label>not met</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#TrainingAction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:label>TrainingAction</rdfs:label>
+    <rdfs:comment>A proposed learning intervention.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#requiresAction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>requiresAction</rdfs:label>
+    <rdfs:comment>Prerequisite: the subject action can start only after the object action.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#RoleProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label>RoleProfile</rdfs:label>
+    <rdfs:comment>A reference role profile. ECSF role names are individuals of this class.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb60">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#coverageStatus"/>
+    <owl:hasValue rdf:resource="https://ict.ihu.gr/carisma-workkg#Deficient"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb53">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#observedLevel"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#methodVersion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>methodVersion</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assetRequiresCompetency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assetRequiresCompetency</rdfs:label>
+    <rdfs:comment>Inferred via the property chain inverse(supportsAsset) o hasRequirement o requiredCompetency.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#Asset"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+    <owl:propertyChainAxiom rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb80"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#MaturityAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb54"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb55"/>
+    <rdfs:label>MaturityAssessment</rdfs:label>
+    <rdfs:comment>Assessment result for practices supporting one organizational capability, under a named maturity model, recorded criterion by criterion.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#capabilityCriticality">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>capabilityCriticality</rdfs:label>
+    <rdfs:comment>Operational importance of the capability on a 0..1 scale, justified by linked risk scenarios and evidence.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb16">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Covered"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb17"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#qualifiedCount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>qualifiedCount</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#criterionDimension">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>criterionDimension</rdfs:label>
+    <rdfs:comment>One of the five rubric dimensions: responsibility and resourcing, process definition, workforce development and continuity, performance measurement, continuous improvement.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#capabilityUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>capabilityUnit</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#levelScale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>levelScale</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyScale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb50"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb51"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb52"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb53"/>
+    <rdfs:label>CompetencyAssessment</rdfs:label>
+    <owl:disjointWith rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityAssessment"/>
+    <rdfs:comment>An evidence-bearing assessment result about one employee and competence in one capability context.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#maturityGapScore">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>maturityGapScore</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#EvidenceGap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb70"/>
+    <rdfs:label>EvidenceGap</rdfs:label>
+    <rdfs:comment>Insufficient evidence to determine coverage; not confirmed lack of skill.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb37">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionStatus"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb38"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb46">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#assignmentUnit"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb47"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb48"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb49"/>
+    <rdfs:label>CompetencyRequirement</rdfs:label>
+    <rdfs:comment>An approved local demand for one competence at a proficiency threshold in one capability context.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb49">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#requirementCapability"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#alpha">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>alpha</rdfs:label>
+    <rdfs:comment>Relative weight of the proficiency gap score in the combined gap score (0..1).</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb63">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb65"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb22">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb23"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb25">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#InTreatment"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb26"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb64">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#coverageStatus"/>
+    <owl:hasValue rdf:resource="https://ict.ihu.gr/carisma-workkg#Unresolved"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#minMaturityEvidenceCoverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>minMaturityEvidenceCoverage</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#maturityEvidenceCoverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>maturityEvidenceCoverage</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#combinedGapScore">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>combinedGapScore</rdfs:label>
+    <rdfs:comment>Withheld (absent) when either evidence coverage is below its snapshot threshold.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#UnresolvedCoverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>UnresolvedCoverage</rdfs:label>
+    <rdfs:comment>Inferred: a coverage result that cannot be determined from accepted, current evidence.</rdfs:comment>
+    <owl:equivalentClass rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb63"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Skill">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+    <rdfs:label>Skill</rdfs:label>
+    <rdfs:comment>An actionable skill concept, including technical and nontechnical skills.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb61">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb62"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Technology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label>Technology</rdfs:label>
+    <rdfs:comment>A technology type or product vocabulary item.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#weight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>weight</rdfs:label>
+    <rdfs:comment>Importance of the requirement to the capability's tasks, set by documented expert judgment.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ML3">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+    <rdfs:label>3 - Defined</rdfs:label>
+    <cw:levelModel rdf:resource="https://ict.ihu.gr/carisma-workkg#CarismaMaturityRubric"/>
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</cw:ordinalRank>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ML2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+    <rdfs:label>2 - Managed</rdfs:label>
+    <cw:levelModel rdf:resource="https://ict.ihu.gr/carisma-workkg#CarismaMaturityRubric"/>
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</cw:ordinalRank>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:versionIRI rdf:resource="https://ict.ihu.gr/carisma-workkg/0.3.0"/>
+    <owl:priorVersion rdf:resource="https://ict.ihu.gr/carisma-workkg/0.2.0"/>
+    <owl:versionInfo>0.3.0</owl:versionInfo>
+    <rdfs:label>CARISMA-WorkKG core ontology</rdfs:label>
+    <rdfs:comment>Core OWL 2 ontology connecting cybersecurity capability requirements, contextual employee competence assessments, organizational maturity assessments, evidence, typed gaps and candidate investment actions. Organization-specific data (e.g. the incident-detection scenario) is kept in separate files that import this ontology.</rdfs:comment>
+    <dcterms:creator>Adam P. Filippidis</dcterms:creator>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-10-25</dcterms:created>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Covered">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CoverageStatus"/>
+    <rdfs:label>covered</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#requirementSourceProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>requirementSourceProfile</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ProficiencyGap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb69"/>
+    <rdfs:label>ProficiencyGap</rdfs:label>
+    <rdfs:comment>A demonstrated shortfall relative to a competency requirement.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb42">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#resultCriterion"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#requiredLevel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>requiredLevel</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb51">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#assessedEmployee"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#workforceInventoryComplete">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>workforceInventoryComplete</rdfs:label>
+    <rdfs:comment>If false, no requirement may be classified as deficient (absence of qualified staff cannot be concluded).</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#observedMaturity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>observedMaturity</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:label>AssessmentSnapshot</rdfs:label>
+    <rdfs:comment>A dated analytical scope that also carries the scoring parameters (alpha, evidence-coverage thresholds, maximum evidence age) and an explicit workforce-inventory completeness statement.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb9">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Closed"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb38">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#CoverageStatus"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb4">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb5"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb31">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Covered"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb32"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#coverageDeficiency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>coverageDeficiency</rdfs:label>
+    <rdfs:comment>max(0, 1 - qualified/required); absent when the coverage status is unresolved.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#supportsAsset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>supportsAsset</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#Asset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ECompetence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+    <rdfs:label>ECompetence</rdfs:label>
+    <rdfs:comment>An e-CF competence concept; source framework and level must be preserved.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#InvestmentAction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb78"/>
+    <rdfs:label>InvestmentAction</rdfs:label>
+    <rdfs:comment>A candidate intervention linked to the gaps it is intended to address; its effects remain estimates until evaluated.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assessedAt">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>assessedAt</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assignmentUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assignmentUnit</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleAssignment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#evidenceMaxAgeDays">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>evidenceMaxAgeDays</rdfs:label>
+    <rdfs:comment>Competency assessments older than this at the snapshot date are outdated and not accepted for coverage.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#maturityCapability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>maturityCapability</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ProcessImprovementAction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:label>ProcessImprovementAction</rdfs:label>
+    <rdfs:comment>An intervention in organizational practices.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Closed">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#GapStatus"/>
+    <rdfs:label>closed</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#targetMaturity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>targetMaturity</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#hasCriterionResult">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:label>hasCriterionResult</rdfs:label>
+    <rdfs:comment>Links a maturity assessment to its per-criterion results; each result belongs to one assessment.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#RoleAssignment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb44"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb45"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb46"/>
+    <rdfs:label>RoleAssignment</rdfs:label>
+    <rdfs:comment>A contextual assignment of a person to a reference role, with dates and allocation.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#hasRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasRequirement</rdfs:label>
+    <owl:inverseOf rdf:resource="https://ict.ihu.gr/carisma-workkg#requirementCapability"/>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb66">
+    <rdf:first rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb64"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#profileTask">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>profileTask</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#TaskType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#requiredCompetency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>requiredCompetency</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#DeliverableType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label>DeliverableType</rdfs:label>
+    <rdfs:comment>A type of expected work product.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#profileCompetency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>profileCompetency</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Asset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Asset</rdfs:label>
+    <rdfs:comment>A concrete organizational asset or deployment.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#estimatedCost">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>estimatedCost</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:label>CapabilityGapAssessment</rdfs:label>
+    <rdfs:comment>Capability-level scoring result within a snapshot: proficiency and maturity gap scores, their evidence coverage, the combined gap score and the gap priority.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasAttributedTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#PartlyMet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionStatus"/>
+    <rdfs:label>partly met</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#DeficientCoverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DeficientCoverage</rdfs:label>
+    <rdfs:comment>Inferred: a coverage result with a demonstrated headcount shortfall.</rdfs:comment>
+    <owl:equivalentClass rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb59"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb10">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:oneOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb11"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb68">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#inSnapshot"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assignedEmployee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assignedEmployee</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleAssignment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ML4">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+    <rdfs:label>4 - Quantitatively Managed</rdfs:label>
+    <cw:levelModel rdf:resource="https://ict.ihu.gr/carisma-workkg#CarismaMaturityRubric"/>
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</cw:ordinalRank>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ProficiencyScale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ProficiencyScale</rdfs:label>
+    <rdfs:comment>A named and versioned proficiency rubric.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#priorityDetermined">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>priorityDetermined</rdfs:label>
+    <rdfs:comment>False when evidence coverage is insufficient and the priority is withheld.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#currency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>currency</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ML5">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+    <rdfs:label>5 - Optimizing</rdfs:label>
+    <cw:levelModel rdf:resource="https://ict.ihu.gr/carisma-workkg#CarismaMaturityRubric"/>
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</cw:ordinalRank>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Unresolved">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CoverageStatus"/>
+    <rdfs:label>unresolved</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#scopeDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>scopeDescription</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assessedCompetency">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assessedCompetency</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb58">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#inSnapshot"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#criterionMandatory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>criterionMandatory</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb44">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#assignedEmployee"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb57">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#coverageStatus"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#CoverageStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#requirementCapability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>requirementCapability</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#sourceVersion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>sourceVersion</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb36">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#GapStatus"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb37"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#snapshotUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>snapshotUnit</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalUnit"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#observedLevel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>observedLevel</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#resultCriterion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>resultCriterion</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Accepted">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ReviewStatus"/>
+    <rdfs:label>accepted</rdfs:label>
+    <rdfs:comment>An assessment accepted as evidence for gap analysis.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb34">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb35"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CarismaMaturityRubric">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityModel"/>
+    <rdfs:label>CARISMA organizational capability maturity rubric</rdfs:label>
+    <cw:sourceVersion>0.1 (study-specific, informed by People CMM and C2M2; not an official appraisal)</cw:sourceVersion>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb30">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#NotAssessed"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb31"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#minProficiencyEvidenceCoverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>minProficiencyEvidenceCoverage</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CoverageStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>CoverageStatus</rdfs:label>
+    <rdfs:comment>Closed vocabulary for the coverage result of one competency requirement within a snapshot.</rdfs:comment>
+    <owl:equivalentClass rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb15"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Met">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionStatus"/>
+    <rdfs:label>met</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb62">
+    <rdf:first rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb60"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Pending">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ReviewStatus"/>
+    <rdfs:label>pending</rdfs:label>
+    <rdfs:comment>Proposed but not yet reviewed; not usable for gap analysis.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#qualifiedEmployee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>qualifiedEmployee</rdfs:label>
+    <rdfs:comment>An employee counted as qualified for the requirement in this coverage result.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb71">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#comparedMaturity"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb52">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#assessmentCapability"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb45">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#assignedProfile"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb81">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#hasRequirement"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb82"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb72">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#unmetCriterion"/>
+    <owl:someValuesFrom rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#unmetCriterion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>unmetCriterion</rdfs:label>
+    <rdfs:comment>A target criterion recorded as partly met or not met.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityGap"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#RequirementCoverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb56"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb57"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb58"/>
+    <rdfs:label>RequirementCoverage</rdfs:label>
+    <rdfs:comment>The computed coverage result of one competency requirement within one snapshot: qualified headcount, coverage deficiency and coverage status.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assessmentCapability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assessmentCapability</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#proficiencyEvidenceCoverage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>proficiencyEvidenceCoverage</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb40">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#levelModel"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#gapPriority">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>gapPriority</rdfs:label>
+    <rdfs:comment>combinedGapScore x capabilityCriticality; withheld when the combined score is withheld.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Approved">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ReviewStatus"/>
+    <rdfs:label>approved</rdfs:label>
+    <rdfs:comment>A requirement approved by a domain expert.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#requiredHeadcount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>requiredHeadcount</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb48">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#requiredLevel"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ordinalRank">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>ordinalRank</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#TaskType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:label>TaskType</rdfs:label>
+    <rdfs:comment>A type of work, not a performed task occurrence.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb70">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#gapRequirement"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#usesTechnology">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>usesTechnology</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#Asset"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#Technology"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb23">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Rejected"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb24"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#KnowledgeArea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+    <rdfs:label>KnowledgeArea</rdfs:label>
+    <rdfs:comment>A knowledge topic concept.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#gapStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>gapStatus</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#GapStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#inSnapshot">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>inSnapshot</rdfs:label>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#InTreatment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#GapStatus"/>
+    <rdfs:label>in treatment</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#MaturityLevel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MaturityLevel</rdfs:label>
+    <rdfs:comment>An ordinal level within exactly one maturity model.</rdfs:comment>
+    <owl:disjointWith rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb40"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb73">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+    <owl:members rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb74"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb56">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#coverageRequirement"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb6">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:oneOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb7"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#GapStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>GapStatus</rdfs:label>
+    <rdfs:comment>Closed vocabulary for the treatment state of a recorded gap.</rdfs:comment>
+    <owl:equivalentClass rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb6"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#profileDeliverable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>profileDeliverable</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#DeliverableType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#GapAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb67"/>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb68"/>
+    <rdfs:label>GapAssessment</rdfs:label>
+    <rdfs:comment>A computed comparison result with method, snapshot and supporting evidence.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#comparedAssessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>comparedAssessment</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#allocationFraction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>allocationFraction</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleAssignment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#MaturityCriterion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MaturityCriterion</rdfs:label>
+    <rdfs:comment>An explicit, evidence-checkable criterion of the maturity rubric, mandatory for one maturity level (Section 3.4).</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb41"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#addressesGap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>addressesGap</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#coverageStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>coverageStatus</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CoverageStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assignedProfile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assignedProfile</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleAssignment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#reviewStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>reviewStatus</rdfs:label>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#ReviewStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#gapCapability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>gapCapability</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb78">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#addressesGap"/>
+    <owl:someValuesFrom rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb41">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#criterionForLevel"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb75">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#EvidenceGap"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb76"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb24">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Open"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb25"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#NotAssessed">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionStatus"/>
+    <rdfs:label>not assessed</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb54">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#maturityCapability"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#HiringAction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:label>HiringAction</rdfs:label>
+    <rdfs:comment>A proposed staffing intervention.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb80">
+    <rdf:first rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb79"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb81"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb43">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#criterionStatus"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#RiskScenario">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    <rdfs:label>RiskScenario</rdfs:label>
+    <rdfs:comment>An assessed adverse scenario connected to affected assets and capability dependencies; informs capability criticality.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb39">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#levelScale"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyScale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Open">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#GapStatus"/>
+    <rdfs:label>open</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb20">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Pending"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb21"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#durationDays">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>durationDays</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb69">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#gapRequirement"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Employee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Employee</rdfs:label>
+    <owl:disjointWith rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+    <rdfs:comment>A person whose competence is assessed; role assignment alone does not establish proficiency.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb47">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#requiredCompetency"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyConcept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#assessedEmployee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>assessedEmployee</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ProficiencyLevel</rdfs:label>
+    <rdfs:comment>An ordinal level on a proficiency scale; not organizational maturity.</rdfs:comment>
+    <rdfs:subClassOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb39"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb55">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#observedMaturity"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb2">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Pending"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb8">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#InTreatment"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb9"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb77">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#performsTaskType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>performsTaskType</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#TaskType"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb15">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:oneOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb16"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#gapRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>gapRequirement</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#levelModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>levelModel</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityModel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#criterionForLevel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>criterionForLevel</rdfs:label>
+    <rdfs:comment>The maturity level for which the criterion is mandatory.</rdfs:comment>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityLevel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#MaturityModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MaturityModel</rdfs:label>
+    <rdfs:comment>A named and versioned model or rubric for organizational practices.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb59">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:intersectionOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb61"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb76">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityGap"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb77"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb21">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Approved"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb22"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#comparedMaturity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>comparedMaturity</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#GapAssessment"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityAssessment"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#ReassessmentAction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="https://ict.ihu.gr/carisma-workkg#InvestmentAction"/>
+    <rdfs:label>ReassessmentAction</rdfs:label>
+    <rdfs:comment>Further assessment to resolve an evidence gap (Section 3.5: when evidence is insufficient, further assessment is the next step).</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb18">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Unresolved"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb67">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://ict.ihu.gr/carisma-workkg#gapCapability"/>
+    <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    <owl:onClass rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#hasEvidence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>hasEvidence</rdfs:label>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#Evidence"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb11">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Met"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb12"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb14">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#NotAssessed"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb19">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+    <owl:distinctMembers rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb20"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#validUntil">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>validUntil</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#dependsOnCapability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label>dependsOnCapability</rdfs:label>
+    <rdfs:domain rdf:resource="https://ict.ihu.gr/carisma-workkg#RiskScenario"/>
+    <rdfs:range rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb28">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#PartlyMet"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb29"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb26">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Closed"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb27"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#CriterionStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>CriterionStatus</rdfs:label>
+    <rdfs:comment>Closed vocabulary for the result of a maturity criterion (Section 3.4).</rdfs:comment>
+    <owl:equivalentClass rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb10"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Rejected">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ReviewStatus"/>
+    <rdfs:label>rejected</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>OrganizationalCapability</rdfs:label>
+    <rdfs:comment>The ability of an organizational unit to perform a defined cybersecurity function in an operational scope.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb35">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#ReviewStatus"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb36"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb12">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#PartlyMet"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb13"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb7">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Open"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb17">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Deficient"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb18"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#validFrom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>validFrom</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#Entity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb3">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Approved"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb4"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb65">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb66"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:oneOf rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/ns/prov#wasDerivedFrom">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb82">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#requiredCompetency"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb27">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Met"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb28"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb33">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Unresolved"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/created">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#Deficient">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CoverageStatus"/>
+    <rdfs:label>deficient</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb29">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#NotMet"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb30"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg#OrganizationalUnit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>OrganizationalUnit</rdfs:label>
+    <rdfs:comment>An organization or unit defining the scope of capability and workforce supply.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb79">
+    <owl:inverseOf rdf:resource="https://ict.ihu.gr/carisma-workkg#supportsAsset"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2004/02/skos/core#Concept">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb32">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#Deficient"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb33"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb13">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#NotMet"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb14"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb74">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyGap"/>
+    <rdf:rest rdf:nodeID="n71f690bc91b74bf3a83c2f976df1f99eb75"/>
+  </rdf:Description>
+</rdf:RDF>

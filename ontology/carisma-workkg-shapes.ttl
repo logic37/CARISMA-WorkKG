@@ -1,0 +1,152 @@
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cw:   <https://ict.ihu.gr/carisma-workkg#> .
+
+# CARISMA-WorkKG v0.2 SHACL shapes (closed-world record validation).
+# OWL checks logical consistency under the open-world assumption; these shapes
+# check that the records needed for a snapshot-scoped gap analysis are present and valid.
+
+cw:Prefixes sh:declare [ sh:prefix "cw" ; sh:namespace "https://ict.ihu.gr/carisma-workkg#"^^xsd:anyURI ] .
+
+# S1 - competency assessment record completeness
+cw:CompetencyAssessmentShape a sh:NodeShape ;
+    rdfs:label "S1 Competency assessment completeness" ;
+    sh:targetClass cw:CompetencyAssessment ;
+    sh:property [ sh:path cw:assessedEmployee ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:Employee ] ;
+    sh:property [ sh:path cw:assessedCompetency ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:CompetencyConcept ] ;
+    sh:property [ sh:path cw:assessmentCapability ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:OrganizationalCapability ] ;
+    sh:property [ sh:path cw:observedLevel ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:ProficiencyLevel ] ;
+    sh:property [ sh:path cw:assessedAt ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ;
+    sh:property [ sh:path cw:hasEvidence ; sh:minCount 1 ; sh:class cw:Evidence ] ;
+    sh:property [ sh:path cw:methodVersion ; sh:minCount 1 ] ;
+    sh:property [ sh:path cw:reviewStatus ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:in ( cw:Pending cw:Accepted cw:Rejected ) ] .
+
+# S2 - competency requirement completeness
+cw:CompetencyRequirementShape a sh:NodeShape ;
+    rdfs:label "S2 Competency requirement completeness" ;
+    sh:targetClass cw:CompetencyRequirement ;
+    sh:property [ sh:path cw:requiredCompetency ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path cw:requiredLevel ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:ProficiencyLevel ] ;
+    sh:property [ sh:path cw:weight ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:decimal ; sh:minExclusive 0 ] ;
+    sh:property [ sh:path cw:requiredHeadcount ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:positiveInteger ] ;
+    sh:property [ sh:path cw:hasEvidence ; sh:minCount 1 ; sh:class cw:Evidence ] ;
+    sh:property [ sh:path cw:reviewStatus ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:in ( cw:Pending cw:Approved cw:Rejected ) ] .
+
+# S3 - scale compatibility between observed and required proficiency levels
+cw:ScaleCompatibilityShape a sh:NodeShape ;
+    rdfs:label "S3 Proficiency scale compatibility" ;
+    sh:targetClass cw:CompetencyAssessment ;
+    sh:sparql [
+        sh:message "Observed proficiency level is on a different scale from the matching requirement." ;
+        sh:prefixes cw:Prefixes ;
+        sh:select """
+            SELECT $this WHERE {
+              $this cw:assessedCompetency ?c ; cw:assessmentCapability ?cap ; cw:observedLevel ?lo .
+              ?req cw:requiredCompetency ?c ; cw:requiredLevel ?lr .
+              ?cap cw:hasRequirement ?req .
+              ?lo cw:levelScale ?s1 . ?lr cw:levelScale ?s2 .
+              FILTER (?s1 != ?s2)
+            }""" ] .
+
+# S4 - snapshot scope and scoring parameters
+cw:SnapshotShape a sh:NodeShape ;
+    rdfs:label "S4 Snapshot scope and parameters" ;
+    sh:targetClass cw:AssessmentSnapshot ;
+    sh:property [ sh:path cw:snapshotUnit ; sh:minCount 1 ; sh:class cw:OrganizationalUnit ] ;
+    sh:property [ sh:path cw:assessedAt ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ] ;
+    sh:property [ sh:path cw:workforceInventoryComplete ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:boolean ] ;
+    sh:property [ sh:path cw:alpha ; sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:decimal ;
+                  sh:minInclusive 0 ; sh:maxInclusive 1 ] ;
+    sh:property [ sh:path cw:minProficiencyEvidenceCoverage ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:minInclusive 0 ; sh:maxInclusive 1 ] ;
+    sh:property [ sh:path cw:minMaturityEvidenceCoverage ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:minInclusive 0 ; sh:maxInclusive 1 ] ;
+    sh:property [ sh:path cw:evidenceMaxAgeDays ; sh:minCount 1 ; sh:maxCount 1 ] .
+
+# S5 - capability criticality and maturity target
+cw:CapabilityShape a sh:NodeShape ;
+    rdfs:label "S5 Capability criticality and target" ;
+    sh:targetClass cw:OrganizationalCapability ;
+    sh:property [ sh:path cw:capabilityCriticality ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:datatype xsd:decimal ; sh:minInclusive 0 ; sh:maxInclusive 1 ] ;
+    sh:property [ sh:path cw:targetMaturity ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:MaturityLevel ] ;
+    sh:property [ sh:path cw:capabilityUnit ; sh:minCount 1 ] .
+
+# S6 - every investment action addresses at least one gap (fix 6b)
+cw:InvestmentActionShape a sh:NodeShape ;
+    rdfs:label "S6 Investment action linked to a gap" ;
+    sh:targetClass cw:InvestmentAction ;
+    sh:property [ sh:path cw:addressesGap ; sh:minCount 1 ; sh:class cw:GapAssessment ;
+                  sh:message "An investment action must address at least one recorded gap." ] .
+
+# S7 - no absence conclusion under an incomplete workforce inventory (fix 6c)
+cw:NoAbsenceUnderIncompleteInventoryShape a sh:NodeShape ;
+    rdfs:label "S7 No deficiency claim under incomplete inventory" ;
+    sh:targetClass cw:ProficiencyGap , cw:RequirementCoverage ;
+    sh:sparql [
+        sh:message "A demonstrated shortfall is recorded although the snapshot's workforce inventory is incomplete; record an EvidenceGap / Unresolved coverage instead." ;
+        sh:prefixes cw:Prefixes ;
+        sh:select """
+            SELECT $this WHERE {
+              $this cw:inSnapshot ?s .
+              ?s cw:workforceInventoryComplete false .
+              { $this a cw:ProficiencyGap } UNION { $this cw:coverageStatus cw:Deficient }
+            }""" ] .
+
+# S8 - maturity gap traceability (fix 6a)
+cw:MaturityGapShape a sh:NodeShape ;
+    rdfs:label "S8 Maturity gap traceability" ;
+    sh:targetClass cw:MaturityGap ;
+    sh:property [ sh:path cw:comparedMaturity ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:MaturityAssessment ] ;
+    sh:property [ sh:path cw:unmetCriterion ; sh:minCount 1 ; sh:class cw:MaturityCriterion ] .
+
+# S9 - criterion results are complete, and every applicable criterion has a recorded result
+cw:CriterionResultShape a sh:NodeShape ;
+    rdfs:label "S9a Criterion result completeness" ;
+    sh:targetClass cw:CriterionResult ;
+    sh:property [ sh:path cw:resultCriterion ; sh:minCount 1 ; sh:maxCount 1 ; sh:class cw:MaturityCriterion ] ;
+    sh:property [ sh:path cw:criterionStatus ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:in ( cw:Met cw:PartlyMet cw:NotMet cw:NotAssessed ) ] .
+cw:MaturityAssessmentCoverageShape a sh:NodeShape ;
+    rdfs:label "S9b Applicable criteria recorded" ;
+    sh:targetClass cw:MaturityAssessment ;
+    sh:sparql [
+        sh:message "A mandatory criterion for the target level (or a lower level) has no recorded result; record it, as 'not assessed' if necessary." ;
+        sh:prefixes cw:Prefixes ;
+        sh:select """
+            SELECT $this ?value WHERE {
+              $this cw:maturityCapability ?cap .
+              ?cap cw:targetMaturity ?t . ?t cw:ordinalRank ?tr ; cw:levelModel ?m .
+              ?value a cw:MaturityCriterion ; cw:criterionMandatory true ; cw:criterionForLevel ?l .
+              ?l cw:ordinalRank ?r ; cw:levelModel ?m .
+              FILTER (?r <= ?tr)
+              FILTER NOT EXISTS { $this cw:hasCriterionResult ?cr . ?cr cw:resultCriterion ?value }
+            }""" ] .
+
+# S10 - a combined score / priority may exist only when both evidence coverages meet the thresholds
+cw:WithheldPriorityShape a sh:NodeShape ;
+    rdfs:label "S10 Priority withheld below evidence thresholds" ;
+    sh:targetClass cw:CapabilityGapAssessment ;
+    sh:property [ sh:path cw:proficiencyEvidenceCoverage ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path cw:maturityEvidenceCoverage ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path cw:priorityDetermined ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:sparql [
+        sh:message "A combined gap score or priority is reported although evidence coverage is below the snapshot threshold." ;
+        sh:prefixes cw:Prefixes ;
+        sh:select """
+            SELECT $this WHERE {
+              $this cw:inSnapshot ?s ; cw:proficiencyEvidenceCoverage ?pc ; cw:maturityEvidenceCoverage ?mc .
+              ?s cw:minProficiencyEvidenceCoverage ?minP ; cw:minMaturityEvidenceCoverage ?minM .
+              { $this cw:combinedGapScore ?x } UNION { $this cw:gapPriority ?x }
+              FILTER (?pc < ?minP || ?mc < ?minM)
+            }""" ] .
+
+# S11 - gap records carry a controlled status
+cw:GapStatusShape a sh:NodeShape ;
+    rdfs:label "S11 Gap status" ;
+    sh:targetClass cw:GapAssessment ;
+    sh:property [ sh:path cw:gapStatus ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:in ( cw:Open cw:InTreatment cw:Closed ) ] .

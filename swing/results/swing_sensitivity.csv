@@ -1,0 +1,12 @@
+investment,base_score,base_rank,pessimistic_score,pessimistic_rank,optimistic_score,optimistic_rank
+Hire OT security engineer,50.9,1,37.6,3,64.2,1
+Train OT staff,46.6,2,33.5,4,59.6,1
+Improve processes,46.5,3,33.8,4,59.2,1
+Outsource monitoring (MSSP),35.9,4,24.9,4,47.0,2
+
+criterion,points_-20%_ranking,unchanged,points_+20%_ranking,unchanged
+Vulnerability mgmt,Hire OT security engineer > Improve processes > Train OT staff > Outsource monitoring (MSSP),False,Hire OT security engineer > Train OT staff > Improve processes > Outsource monitoring (MSSP),True
+Incident detection,Hire OT security engineer > Improve processes > Train OT staff > Outsource monitoring (MSSP),False,Hire OT security engineer > Train OT staff > Improve processes > Outsource monitoring (MSSP),True
+Backup & recovery,Hire OT security engineer > Train OT staff > Improve processes > Outsource monitoring (MSSP),True,Hire OT security engineer > Improve processes > Train OT staff > Outsource monitoring (MSSP),False
+Identity & access,Hire OT security engineer > Train OT staff > Improve processes > Outsource monitoring (MSSP),True,Hire OT security engineer > Improve processes > Train OT staff > Outsource monitoring (MSSP),False
+Security awareness,Hire OT security engineer > Improve processes > Train OT staff > Outsource monitoring (MSSP),False,Hire OT security engineer > Train OT staff > Improve processes > Outsource monitoring (MSSP),True

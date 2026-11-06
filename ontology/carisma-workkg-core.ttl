@@ -1,0 +1,458 @@
+@prefix cw:      <https://ict.ihu.gr/carisma-workkg#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+#################################################################
+#  Ontology header
+#################################################################
+
+<https://ict.ihu.gr/carisma-workkg> a owl:Ontology ;
+    owl:versionIRI <https://ict.ihu.gr/carisma-workkg/0.3.0> ;
+    owl:priorVersion <https://ict.ihu.gr/carisma-workkg/0.2.0> ;
+    owl:versionInfo "0.3.0" ;
+    rdfs:label "CARISMA-WorkKG core ontology" ;
+    rdfs:comment "Core OWL 2 ontology connecting cybersecurity capability requirements, contextual employee competence assessments, organizational maturity assessments, evidence, typed gaps and candidate investment actions. Organization-specific data (e.g. the incident-detection scenario) is kept in separate files that import this ontology." ;
+    dcterms:creator "Adam P. Filippidis" ;
+    dcterms:created "2026-10-25"^^xsd:date .
+
+dcterms:creator a owl:AnnotationProperty .
+dcterms:created a owl:AnnotationProperty .
+
+#################################################################
+#  External anchors (declared, not imported)
+#################################################################
+
+skos:Concept a owl:Class .
+prov:Entity  a owl:Class .
+prov:wasDerivedFrom  a owl:ObjectProperty .
+prov:wasAttributedTo a owl:ObjectProperty .
+
+#################################################################
+#  Controlled vocabularies (fix 5)
+#################################################################
+
+cw:ReviewStatus a owl:Class ;
+    rdfs:label "ReviewStatus" ;
+    rdfs:comment "Closed vocabulary for the review state of a requirement, assessment or mapping." ;
+    owl:equivalentClass [ a owl:Class ; owl:oneOf ( cw:Pending cw:Approved cw:Accepted cw:Rejected ) ] .
+cw:Pending  a owl:NamedIndividual , cw:ReviewStatus ; rdfs:label "pending" ;
+    rdfs:comment "Proposed but not yet reviewed; not usable for gap analysis." .
+cw:Approved a owl:NamedIndividual , cw:ReviewStatus ; rdfs:label "approved" ;
+    rdfs:comment "A requirement approved by a domain expert." .
+cw:Accepted a owl:NamedIndividual , cw:ReviewStatus ; rdfs:label "accepted" ;
+    rdfs:comment "An assessment accepted as evidence for gap analysis." .
+cw:Rejected a owl:NamedIndividual , cw:ReviewStatus ; rdfs:label "rejected" .
+
+cw:GapStatus a owl:Class ;
+    rdfs:label "GapStatus" ;
+    rdfs:comment "Closed vocabulary for the treatment state of a recorded gap." ;
+    owl:equivalentClass [ a owl:Class ; owl:oneOf ( cw:Open cw:InTreatment cw:Closed ) ] .
+cw:Open        a owl:NamedIndividual , cw:GapStatus ; rdfs:label "open" .
+cw:InTreatment a owl:NamedIndividual , cw:GapStatus ; rdfs:label "in treatment" .
+cw:Closed      a owl:NamedIndividual , cw:GapStatus ; rdfs:label "closed" .
+
+cw:CriterionStatus a owl:Class ;
+    rdfs:label "CriterionStatus" ;
+    rdfs:comment "Closed vocabulary for the result of a maturity criterion (Section 3.4)." ;
+    owl:equivalentClass [ a owl:Class ; owl:oneOf ( cw:Met cw:PartlyMet cw:NotMet cw:NotAssessed ) ] .
+cw:Met         a owl:NamedIndividual , cw:CriterionStatus ; rdfs:label "met" .
+cw:PartlyMet   a owl:NamedIndividual , cw:CriterionStatus ; rdfs:label "partly met" .
+cw:NotMet      a owl:NamedIndividual , cw:CriterionStatus ; rdfs:label "not met" .
+cw:NotAssessed a owl:NamedIndividual , cw:CriterionStatus ; rdfs:label "not assessed" .
+
+cw:CoverageStatus a owl:Class ;
+    rdfs:label "CoverageStatus" ;
+    rdfs:comment "Closed vocabulary for the coverage result of one competency requirement within a snapshot." ;
+    owl:equivalentClass [ a owl:Class ; owl:oneOf ( cw:Covered cw:Deficient cw:Unresolved ) ] .
+cw:Covered    a owl:NamedIndividual , cw:CoverageStatus ; rdfs:label "covered" .
+cw:Deficient  a owl:NamedIndividual , cw:CoverageStatus ; rdfs:label "deficient" .
+cw:Unresolved a owl:NamedIndividual , cw:CoverageStatus ; rdfs:label "unresolved" .
+
+[] a owl:AllDifferent ; owl:distinctMembers (
+    cw:Pending cw:Approved cw:Accepted cw:Rejected
+    cw:Open cw:InTreatment cw:Closed
+    cw:Met cw:PartlyMet cw:NotMet cw:NotAssessed
+    cw:Covered cw:Deficient cw:Unresolved ) .
+
+[] a owl:AllDisjointClasses ; owl:members ( cw:ReviewStatus cw:GapStatus cw:CriterionStatus cw:CoverageStatus ) .
+
+#################################################################
+#  Reference vocabulary (ECSF-derived concepts)
+#################################################################
+
+cw:CompetencyConcept a owl:Class ; rdfs:subClassOf skos:Concept ;
+    rdfs:label "CompetencyConcept" ;
+    rdfs:comment "Reusable competence vocabulary item, not an employee competence assertion." .
+cw:Skill a owl:Class ; rdfs:subClassOf cw:CompetencyConcept ;
+    rdfs:label "Skill" ; rdfs:comment "An actionable skill concept, including technical and nontechnical skills." .
+cw:KnowledgeArea a owl:Class ; rdfs:subClassOf cw:CompetencyConcept ;
+    rdfs:label "KnowledgeArea" ; rdfs:comment "A knowledge topic concept." .
+cw:ECompetence a owl:Class ; rdfs:subClassOf cw:CompetencyConcept ;
+    rdfs:label "ECompetence" ; rdfs:comment "An e-CF competence concept; source framework and level must be preserved." .
+cw:RoleProfile a owl:Class ; rdfs:subClassOf skos:Concept ;
+    rdfs:label "RoleProfile" ; rdfs:comment "A reference role profile. ECSF role names are individuals of this class." .
+cw:TaskType a owl:Class ; rdfs:subClassOf skos:Concept ;
+    rdfs:label "TaskType" ; rdfs:comment "A type of work, not a performed task occurrence." .
+cw:DeliverableType a owl:Class ; rdfs:subClassOf skos:Concept ;
+    rdfs:label "DeliverableType" ; rdfs:comment "A type of expected work product." .
+cw:Technology a owl:Class ; rdfs:subClassOf skos:Concept ;
+    rdfs:label "Technology" ; rdfs:comment "A technology type or product vocabulary item." .
+
+#################################################################
+#  Scales and maturity model
+#################################################################
+
+cw:ProficiencyScale a owl:Class ;
+    rdfs:label "ProficiencyScale" ; rdfs:comment "A named and versioned proficiency rubric." .
+cw:ProficiencyLevel a owl:Class ;
+    rdfs:label "ProficiencyLevel" ; rdfs:comment "An ordinal level on a proficiency scale; not organizational maturity." ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty cw:levelScale ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:ProficiencyScale ] .
+cw:MaturityModel a owl:Class ;
+    rdfs:label "MaturityModel" ; rdfs:comment "A named and versioned model or rubric for organizational practices." .
+cw:MaturityLevel a owl:Class ;
+    rdfs:label "MaturityLevel" ; rdfs:comment "An ordinal level within exactly one maturity model." ;
+    owl:disjointWith cw:ProficiencyLevel ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty cw:levelModel ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:MaturityModel ] .
+
+# Fix 3: rubric criteria and their recorded results
+cw:MaturityCriterion a owl:Class ;
+    rdfs:label "MaturityCriterion" ;
+    rdfs:comment "An explicit, evidence-checkable criterion of the maturity rubric, mandatory for one maturity level (Section 3.4)." ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty cw:criterionForLevel ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:MaturityLevel ] .
+cw:CriterionResult a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "CriterionResult" ;
+    rdfs:comment "The recorded result (met, partly met, not met, not assessed) of one criterion within one maturity assessment." ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty cw:resultCriterion ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:MaturityCriterion ] ,
+                    [ a owl:Restriction ; owl:onProperty cw:criterionStatus ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:CriterionStatus ] .
+
+#################################################################
+#  Organizational setting
+#################################################################
+
+cw:OrganizationalUnit a owl:Class ;
+    rdfs:label "OrganizationalUnit" ; rdfs:comment "An organization or unit defining the scope of capability and workforce supply." .
+cw:OrganizationalCapability a owl:Class ;
+    rdfs:label "OrganizationalCapability" ;
+    rdfs:comment "The ability of an organizational unit to perform a defined cybersecurity function in an operational scope." .
+cw:Asset a owl:Class ;
+    rdfs:label "Asset" ; rdfs:comment "A concrete organizational asset or deployment." .
+cw:RiskScenario a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "RiskScenario" ; rdfs:comment "An assessed adverse scenario connected to affected assets and capability dependencies; informs capability criticality." .
+cw:Employee a owl:Class ;
+    rdfs:label "Employee" ; owl:disjointWith cw:RoleProfile ;
+    rdfs:comment "A person whose competence is assessed; role assignment alone does not establish proficiency." .
+cw:RoleAssignment a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "RoleAssignment" ;
+    rdfs:comment "A contextual assignment of a person to a reference role, with dates and allocation." ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty cw:assignedEmployee ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:Employee ] ,
+        [ a owl:Restriction ; owl:onProperty cw:assignedProfile  ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:RoleProfile ] ,
+        [ a owl:Restriction ; owl:onProperty cw:assignmentUnit   ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:OrganizationalUnit ] .
+cw:Evidence a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "Evidence" ; rdfs:comment "Source document, assessment record or observation supporting a claim." .
+
+#################################################################
+#  Demand and supply records
+#################################################################
+
+cw:CompetencyRequirement a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "CompetencyRequirement" ;
+    rdfs:comment "An approved local demand for one competence at a proficiency threshold in one capability context." ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty cw:requiredCompetency    ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:CompetencyConcept ] ,
+        [ a owl:Restriction ; owl:onProperty cw:requiredLevel         ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:ProficiencyLevel ] ,
+        [ a owl:Restriction ; owl:onProperty cw:requirementCapability ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:OrganizationalCapability ] .
+cw:CompetencyAssessment a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "CompetencyAssessment" ; owl:disjointWith cw:MaturityAssessment ;
+    rdfs:comment "An evidence-bearing assessment result about one employee and competence in one capability context." ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty cw:assessedCompetency   ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:CompetencyConcept ] ,
+        [ a owl:Restriction ; owl:onProperty cw:assessedEmployee     ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:Employee ] ,
+        [ a owl:Restriction ; owl:onProperty cw:assessmentCapability ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:OrganizationalCapability ] ,
+        [ a owl:Restriction ; owl:onProperty cw:observedLevel        ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:ProficiencyLevel ] .
+cw:MaturityAssessment a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "MaturityAssessment" ;
+    rdfs:comment "Assessment result for practices supporting one organizational capability, under a named maturity model, recorded criterion by criterion." ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty cw:maturityCapability ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:OrganizationalCapability ] ,
+        [ a owl:Restriction ; owl:onProperty cw:observedMaturity   ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:MaturityLevel ] .
+
+cw:AssessmentSnapshot a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "AssessmentSnapshot" ;
+    rdfs:comment "A dated analytical scope that also carries the scoring parameters (alpha, evidence-coverage thresholds, maximum evidence age) and an explicit workforce-inventory completeness statement." .
+
+#################################################################
+#  Computed results (fix 4)
+#################################################################
+
+cw:RequirementCoverage a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "RequirementCoverage" ;
+    rdfs:comment "The computed coverage result of one competency requirement within one snapshot: qualified headcount, coverage deficiency and coverage status." ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty cw:coverageRequirement ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:CompetencyRequirement ] ,
+        [ a owl:Restriction ; owl:onProperty cw:coverageStatus      ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:CoverageStatus ] ,
+        [ a owl:Restriction ; owl:onProperty cw:inSnapshot          ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:AssessmentSnapshot ] .
+
+# Defined classes: the reasoner classifies coverage results by status
+cw:DeficientCoverage a owl:Class ;
+    rdfs:label "DeficientCoverage" ;
+    rdfs:comment "Inferred: a coverage result with a demonstrated headcount shortfall." ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( cw:RequirementCoverage
+        [ a owl:Restriction ; owl:onProperty cw:coverageStatus ; owl:hasValue cw:Deficient ] ) ] .
+cw:UnresolvedCoverage a owl:Class ;
+    rdfs:label "UnresolvedCoverage" ;
+    rdfs:comment "Inferred: a coverage result that cannot be determined from accepted, current evidence." ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf ( cw:RequirementCoverage
+        [ a owl:Restriction ; owl:onProperty cw:coverageStatus ; owl:hasValue cw:Unresolved ] ) ] .
+
+cw:GapAssessment a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "GapAssessment" ;
+    rdfs:comment "A computed comparison result with method, snapshot and supporting evidence." ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty cw:gapCapability ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:OrganizationalCapability ] ,
+        [ a owl:Restriction ; owl:onProperty cw:inSnapshot    ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:AssessmentSnapshot ] .
+cw:ProficiencyGap a owl:Class ; rdfs:subClassOf cw:GapAssessment ;
+    rdfs:label "ProficiencyGap" ; rdfs:comment "A demonstrated shortfall relative to a competency requirement." ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty cw:gapRequirement ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:CompetencyRequirement ] .
+cw:EvidenceGap a owl:Class ; rdfs:subClassOf cw:GapAssessment ;
+    rdfs:label "EvidenceGap" ; rdfs:comment "Insufficient evidence to determine coverage; not confirmed lack of skill." ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty cw:gapRequirement ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:CompetencyRequirement ] .
+# Fix 6a: MaturityGap now references exactly one maturity assessment and at least one unmet criterion
+cw:MaturityGap a owl:Class ; rdfs:subClassOf cw:GapAssessment ;
+    rdfs:label "MaturityGap" ; rdfs:comment "A shortfall against a capability maturity target, traceable to the unmet criteria; not an employee score." ;
+    rdfs:subClassOf
+        [ a owl:Restriction ; owl:onProperty cw:comparedMaturity ; owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass cw:MaturityAssessment ] ,
+        [ a owl:Restriction ; owl:onProperty cw:unmetCriterion   ; owl:someValuesFrom cw:MaturityCriterion ] .
+cw:CapabilityGapAssessment a owl:Class ; rdfs:subClassOf cw:GapAssessment ;
+    rdfs:label "CapabilityGapAssessment" ;
+    rdfs:comment "Capability-level scoring result within a snapshot: proficiency and maturity gap scores, their evidence coverage, the combined gap score and the gap priority." .
+
+[] a owl:AllDisjointClasses ; owl:members ( cw:ProficiencyGap cw:EvidenceGap cw:MaturityGap cw:CapabilityGapAssessment ) .
+
+#################################################################
+#  Investment actions
+#################################################################
+
+# Fix 6b: every action addresses at least one gap (also enforced as SHACL minCount, since OWL is open-world)
+cw:InvestmentAction a owl:Class ; rdfs:subClassOf prov:Entity ;
+    rdfs:label "InvestmentAction" ; rdfs:comment "A candidate intervention linked to the gaps it is intended to address; its effects remain estimates until evaluated." ;
+    rdfs:subClassOf [ a owl:Restriction ; owl:onProperty cw:addressesGap ; owl:someValuesFrom cw:GapAssessment ] .
+cw:TrainingAction a owl:Class ; rdfs:subClassOf cw:InvestmentAction ;
+    rdfs:label "TrainingAction" ; rdfs:comment "A proposed learning intervention." .
+cw:HiringAction a owl:Class ; rdfs:subClassOf cw:InvestmentAction ;
+    rdfs:label "HiringAction" ; rdfs:comment "A proposed staffing intervention." .
+cw:OutsourcingAction a owl:Class ; rdfs:subClassOf cw:InvestmentAction ;
+    rdfs:label "OutsourcingAction" ; rdfs:comment "A proposed external-service intervention." .
+cw:ProcessImprovementAction a owl:Class ; rdfs:subClassOf cw:InvestmentAction ;
+    rdfs:label "ProcessImprovementAction" ; rdfs:comment "An intervention in organizational practices." .
+cw:ReassessmentAction a owl:Class ; rdfs:subClassOf cw:InvestmentAction ;
+    rdfs:label "ReassessmentAction" ; rdfs:comment "Further assessment to resolve an evidence gap (Section 3.5: when evidence is insufficient, further assessment is the next step)." .
+
+#################################################################
+#  Object properties
+#################################################################
+
+cw:addressesGap a owl:ObjectProperty ; rdfs:label "addressesGap" ;
+    rdfs:domain cw:InvestmentAction ; rdfs:range cw:GapAssessment .
+cw:requiresAction a owl:ObjectProperty ; rdfs:label "requiresAction" ;
+    rdfs:comment "Prerequisite: the subject action can start only after the object action." ;
+    rdfs:domain cw:InvestmentAction ; rdfs:range cw:InvestmentAction .
+cw:affectsAsset a owl:ObjectProperty ; rdfs:label "affectsAsset" ;
+    rdfs:domain cw:RiskScenario ; rdfs:range cw:Asset .
+cw:dependsOnCapability a owl:ObjectProperty ; rdfs:label "dependsOnCapability" ;
+    rdfs:domain cw:RiskScenario ; rdfs:range cw:OrganizationalCapability .
+cw:assessedCompetency a owl:ObjectProperty ; rdfs:label "assessedCompetency" ;
+    rdfs:domain cw:CompetencyAssessment ; rdfs:range cw:CompetencyConcept .
+cw:assessedEmployee a owl:ObjectProperty ; rdfs:label "assessedEmployee" ;
+    rdfs:domain cw:CompetencyAssessment ; rdfs:range cw:Employee .
+cw:assessmentCapability a owl:ObjectProperty ; rdfs:label "assessmentCapability" ;
+    rdfs:domain cw:CompetencyAssessment ; rdfs:range cw:OrganizationalCapability .
+cw:observedLevel a owl:ObjectProperty ; rdfs:label "observedLevel" ;
+    rdfs:domain cw:CompetencyAssessment ; rdfs:range cw:ProficiencyLevel .
+cw:assignedEmployee a owl:ObjectProperty ; rdfs:label "assignedEmployee" ;
+    rdfs:domain cw:RoleAssignment ; rdfs:range cw:Employee .
+cw:assignedProfile a owl:ObjectProperty ; rdfs:label "assignedProfile" ;
+    rdfs:domain cw:RoleAssignment ; rdfs:range cw:RoleProfile .
+cw:assignmentUnit a owl:ObjectProperty ; rdfs:label "assignmentUnit" ;
+    rdfs:domain cw:RoleAssignment ; rdfs:range cw:OrganizationalUnit .
+cw:capabilityUnit a owl:ObjectProperty ; rdfs:label "capabilityUnit" ;
+    rdfs:domain cw:OrganizationalCapability ; rdfs:range cw:OrganizationalUnit .
+cw:supportsAsset a owl:ObjectProperty ; rdfs:label "supportsAsset" ;
+    rdfs:domain cw:OrganizationalCapability ; rdfs:range cw:Asset .
+cw:performsTaskType a owl:ObjectProperty ; rdfs:label "performsTaskType" ;
+    rdfs:domain cw:OrganizationalCapability ; rdfs:range cw:TaskType .
+cw:targetMaturity a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "targetMaturity" ;
+    rdfs:domain cw:OrganizationalCapability ; rdfs:range cw:MaturityLevel .
+cw:usesTechnology a owl:ObjectProperty ; rdfs:label "usesTechnology" ;
+    rdfs:domain cw:Asset ; rdfs:range cw:Technology .
+cw:hasRequirement a owl:ObjectProperty ; rdfs:label "hasRequirement" ;
+    owl:inverseOf cw:requirementCapability ;
+    rdfs:domain cw:OrganizationalCapability ; rdfs:range cw:CompetencyRequirement .
+cw:requirementCapability a owl:ObjectProperty ; rdfs:label "requirementCapability" ;
+    rdfs:domain cw:CompetencyRequirement ; rdfs:range cw:OrganizationalCapability .
+cw:requiredCompetency a owl:ObjectProperty ; rdfs:label "requiredCompetency" ;
+    rdfs:domain cw:CompetencyRequirement ; rdfs:range cw:CompetencyConcept .
+cw:requiredLevel a owl:ObjectProperty ; rdfs:label "requiredLevel" ;
+    rdfs:domain cw:CompetencyRequirement ; rdfs:range cw:ProficiencyLevel .
+cw:requirementSourceProfile a owl:ObjectProperty ; rdfs:label "requirementSourceProfile" ;
+    rdfs:domain cw:CompetencyRequirement ; rdfs:range cw:RoleProfile .
+cw:profileCompetency a owl:ObjectProperty ; rdfs:label "profileCompetency" ;
+    rdfs:domain cw:RoleProfile ; rdfs:range cw:CompetencyConcept .
+cw:profileTask a owl:ObjectProperty ; rdfs:label "profileTask" ;
+    rdfs:domain cw:RoleProfile ; rdfs:range cw:TaskType .
+cw:profileDeliverable a owl:ObjectProperty ; rdfs:label "profileDeliverable" ;
+    rdfs:domain cw:RoleProfile ; rdfs:range cw:DeliverableType .
+cw:levelScale a owl:ObjectProperty ; rdfs:label "levelScale" ;
+    rdfs:domain cw:ProficiencyLevel ; rdfs:range cw:ProficiencyScale .
+cw:levelModel a owl:ObjectProperty ; rdfs:label "levelModel" ;
+    rdfs:domain cw:MaturityLevel ; rdfs:range cw:MaturityModel .
+cw:maturityCapability a owl:ObjectProperty ; rdfs:label "maturityCapability" ;
+    rdfs:domain cw:MaturityAssessment ; rdfs:range cw:OrganizationalCapability .
+cw:observedMaturity a owl:ObjectProperty ; rdfs:label "observedMaturity" ;
+    rdfs:domain cw:MaturityAssessment ; rdfs:range cw:MaturityLevel .
+cw:hasCriterionResult a owl:ObjectProperty , owl:InverseFunctionalProperty ; rdfs:label "hasCriterionResult" ;
+    rdfs:comment "Links a maturity assessment to its per-criterion results; each result belongs to one assessment." ;
+    rdfs:domain cw:MaturityAssessment ; rdfs:range cw:CriterionResult .
+cw:resultCriterion a owl:ObjectProperty ; rdfs:label "resultCriterion" ;
+    rdfs:domain cw:CriterionResult ; rdfs:range cw:MaturityCriterion .
+cw:criterionStatus a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "criterionStatus" ;
+    rdfs:domain cw:CriterionResult ; rdfs:range cw:CriterionStatus .
+cw:criterionForLevel a owl:ObjectProperty ; rdfs:label "criterionForLevel" ;
+    rdfs:comment "The maturity level for which the criterion is mandatory." ;
+    rdfs:domain cw:MaturityCriterion ; rdfs:range cw:MaturityLevel .
+cw:hasEvidence a owl:ObjectProperty ; rdfs:label "hasEvidence" ;
+    rdfs:range cw:Evidence .
+cw:inSnapshot a owl:ObjectProperty ; rdfs:label "inSnapshot" ;
+    rdfs:range cw:AssessmentSnapshot .
+cw:snapshotUnit a owl:ObjectProperty ; rdfs:label "snapshotUnit" ;
+    rdfs:domain cw:AssessmentSnapshot ; rdfs:range cw:OrganizationalUnit .
+cw:gapCapability a owl:ObjectProperty ; rdfs:label "gapCapability" ;
+    rdfs:domain cw:GapAssessment ; rdfs:range cw:OrganizationalCapability .
+cw:gapRequirement a owl:ObjectProperty ; rdfs:label "gapRequirement" ;
+    rdfs:domain cw:GapAssessment ; rdfs:range cw:CompetencyRequirement .
+cw:comparedAssessment a owl:ObjectProperty ; rdfs:label "comparedAssessment" ;
+    rdfs:domain cw:GapAssessment ; rdfs:range cw:CompetencyAssessment .
+cw:comparedMaturity a owl:ObjectProperty ; rdfs:label "comparedMaturity" ;
+    rdfs:domain cw:GapAssessment ; rdfs:range cw:MaturityAssessment .
+cw:unmetCriterion a owl:ObjectProperty ; rdfs:label "unmetCriterion" ;
+    rdfs:comment "A target criterion recorded as partly met or not met." ;
+    rdfs:domain cw:MaturityGap ; rdfs:range cw:MaturityCriterion .
+cw:gapStatus a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "gapStatus" ;
+    rdfs:domain cw:GapAssessment ; rdfs:range cw:GapStatus .
+cw:reviewStatus a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "reviewStatus" ;
+    rdfs:range cw:ReviewStatus .
+cw:coverageRequirement a owl:ObjectProperty ; rdfs:label "coverageRequirement" ;
+    rdfs:domain cw:RequirementCoverage ; rdfs:range cw:CompetencyRequirement .
+cw:coverageStatus a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:label "coverageStatus" ;
+    rdfs:domain cw:RequirementCoverage ; rdfs:range cw:CoverageStatus .
+cw:qualifiedEmployee a owl:ObjectProperty ; rdfs:label "qualifiedEmployee" ;
+    rdfs:comment "An employee counted as qualified for the requirement in this coverage result." ;
+    rdfs:domain cw:RequirementCoverage ; rdfs:range cw:Employee .
+
+# Inference used by the decision questions: asset -> competences it depends on
+cw:assetRequiresCompetency a owl:ObjectProperty ; rdfs:label "assetRequiresCompetency" ;
+    rdfs:comment "Inferred via the property chain inverse(supportsAsset) o hasRequirement o requiredCompetency." ;
+    rdfs:domain cw:Asset ; rdfs:range cw:CompetencyConcept ;
+    owl:propertyChainAxiom ( [ owl:inverseOf cw:supportsAsset ] cw:hasRequirement cw:requiredCompetency ) .
+
+#################################################################
+#  Datatype properties
+#################################################################
+
+cw:allocationFraction a owl:DatatypeProperty ; rdfs:label "allocationFraction" ;
+    rdfs:domain cw:RoleAssignment ; rdfs:range xsd:decimal .
+cw:assessedAt a owl:DatatypeProperty ; rdfs:label "assessedAt" ; rdfs:range xsd:dateTime .
+cw:validFrom  a owl:DatatypeProperty ; rdfs:label "validFrom"  ; rdfs:range xsd:dateTime .
+cw:validUntil a owl:DatatypeProperty ; rdfs:label "validUntil" ; rdfs:range xsd:dateTime .
+cw:methodVersion a owl:DatatypeProperty ; rdfs:label "methodVersion" ; rdfs:range xsd:string .
+cw:sourceVersion a owl:DatatypeProperty ; rdfs:label "sourceVersion" ; rdfs:range xsd:string .
+cw:scopeDescription a owl:DatatypeProperty ; rdfs:label "scopeDescription" ; rdfs:range xsd:string .
+cw:ordinalRank a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "ordinalRank" ; rdfs:range xsd:nonNegativeInteger .
+cw:currency a owl:DatatypeProperty ; rdfs:label "currency" ;
+    rdfs:domain cw:InvestmentAction ; rdfs:range xsd:string .
+cw:durationDays a owl:DatatypeProperty ; rdfs:label "durationDays" ;
+    rdfs:domain cw:InvestmentAction ; rdfs:range xsd:nonNegativeInteger .
+cw:estimatedCost a owl:DatatypeProperty ; rdfs:label "estimatedCost" ;
+    rdfs:domain cw:InvestmentAction ; rdfs:range xsd:decimal .
+cw:requiredHeadcount a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "requiredHeadcount" ;
+    rdfs:domain cw:CompetencyRequirement ; rdfs:range xsd:positiveInteger .
+cw:weight a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "weight" ;
+    rdfs:comment "Importance of the requirement to the capability's tasks, set by documented expert judgment." ;
+    rdfs:domain cw:CompetencyRequirement ; rdfs:range xsd:decimal .
+cw:criterionDimension a owl:DatatypeProperty ; rdfs:label "criterionDimension" ;
+    rdfs:comment "One of the five rubric dimensions: responsibility and resourcing, process definition, workforce development and continuity, performance measurement, continuous improvement." ;
+    rdfs:domain cw:MaturityCriterion ; rdfs:range xsd:string .
+cw:criterionMandatory a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "criterionMandatory" ;
+    rdfs:domain cw:MaturityCriterion ; rdfs:range xsd:boolean .
+
+# Fix 4: scoring parameters on the snapshot
+cw:workforceInventoryComplete a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "workforceInventoryComplete" ;
+    rdfs:comment "If false, no requirement may be classified as deficient (absence of qualified staff cannot be concluded)." ;
+    rdfs:domain cw:AssessmentSnapshot ; rdfs:range xsd:boolean .
+cw:alpha a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "alpha" ;
+    rdfs:comment "Relative weight of the proficiency gap score in the combined gap score (0..1)." ;
+    rdfs:domain cw:AssessmentSnapshot ; rdfs:range xsd:decimal .
+cw:minProficiencyEvidenceCoverage a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "minProficiencyEvidenceCoverage" ;
+    rdfs:domain cw:AssessmentSnapshot ; rdfs:range xsd:decimal .
+cw:minMaturityEvidenceCoverage a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "minMaturityEvidenceCoverage" ;
+    rdfs:domain cw:AssessmentSnapshot ; rdfs:range xsd:decimal .
+cw:evidenceMaxAgeDays a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "evidenceMaxAgeDays" ;
+    rdfs:comment "Competency assessments older than this at the snapshot date are outdated and not accepted for coverage." ;
+    rdfs:domain cw:AssessmentSnapshot ; rdfs:range xsd:nonNegativeInteger .
+cw:capabilityCriticality a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "capabilityCriticality" ;
+    rdfs:comment "Operational importance of the capability on a 0..1 scale, justified by linked risk scenarios and evidence." ;
+    rdfs:domain cw:OrganizationalCapability ; rdfs:range xsd:decimal .
+
+# Fix 4: computed results
+cw:qualifiedCount a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "qualifiedCount" ;
+    rdfs:domain cw:RequirementCoverage ; rdfs:range xsd:nonNegativeInteger .
+cw:coverageDeficiency a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "coverageDeficiency" ;
+    rdfs:comment "max(0, 1 - qualified/required); absent when the coverage status is unresolved." ;
+    rdfs:domain cw:RequirementCoverage ; rdfs:range xsd:decimal .
+cw:proficiencyGapScore a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "proficiencyGapScore" ;
+    rdfs:domain cw:CapabilityGapAssessment ; rdfs:range xsd:decimal .
+cw:proficiencyEvidenceCoverage a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "proficiencyEvidenceCoverage" ;
+    rdfs:domain cw:CapabilityGapAssessment ; rdfs:range xsd:decimal .
+cw:maturityGapScore a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "maturityGapScore" ;
+    rdfs:domain cw:CapabilityGapAssessment ; rdfs:range xsd:decimal .
+cw:maturityEvidenceCoverage a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "maturityEvidenceCoverage" ;
+    rdfs:domain cw:CapabilityGapAssessment ; rdfs:range xsd:decimal .
+cw:combinedGapScore a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "combinedGapScore" ;
+    rdfs:comment "Withheld (absent) when either evidence coverage is below its snapshot threshold." ;
+    rdfs:domain cw:CapabilityGapAssessment ; rdfs:range xsd:decimal .
+cw:gapPriority a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "gapPriority" ;
+    rdfs:comment "combinedGapScore x capabilityCriticality; withheld when the combined score is withheld." ;
+    rdfs:domain cw:CapabilityGapAssessment ; rdfs:range xsd:decimal .
+cw:priorityDetermined a owl:DatatypeProperty , owl:FunctionalProperty ; rdfs:label "priorityDetermined" ;
+    rdfs:comment "False when evidence coverage is insufficient and the priority is withheld." ;
+    rdfs:domain cw:CapabilityGapAssessment ; rdfs:range xsd:boolean .
+
+#################################################################
+#  Study maturity rubric (Table 2 of the paper)
+#################################################################
+
+cw:CarismaMaturityRubric a owl:NamedIndividual , cw:MaturityModel ;
+    rdfs:label "CARISMA organizational capability maturity rubric" ;
+    cw:sourceVersion "0.1 (study-specific, informed by People CMM and C2M2; not an official appraisal)" .
+cw:ML1 a owl:NamedIndividual , cw:MaturityLevel ; rdfs:label "1 - Initial" ;
+    cw:levelModel cw:CarismaMaturityRubric ; cw:ordinalRank "1"^^xsd:nonNegativeInteger .
+cw:ML2 a owl:NamedIndividual , cw:MaturityLevel ; rdfs:label "2 - Managed" ;
+    cw:levelModel cw:CarismaMaturityRubric ; cw:ordinalRank "2"^^xsd:nonNegativeInteger .
+cw:ML3 a owl:NamedIndividual , cw:MaturityLevel ; rdfs:label "3 - Defined" ;
+    cw:levelModel cw:CarismaMaturityRubric ; cw:ordinalRank "3"^^xsd:nonNegativeInteger .
+cw:ML4 a owl:NamedIndividual , cw:MaturityLevel ; rdfs:label "4 - Quantitatively Managed" ;
+    cw:levelModel cw:CarismaMaturityRubric ; cw:ordinalRank "4"^^xsd:nonNegativeInteger .
+cw:ML5 a owl:NamedIndividual , cw:MaturityLevel ; rdfs:label "5 - Optimizing" ;
+    cw:levelModel cw:CarismaMaturityRubric ; cw:ordinalRank "5"^^xsd:nonNegativeInteger .

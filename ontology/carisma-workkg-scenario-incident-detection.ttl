@@ -1,0 +1,653 @@
+@prefix cw: <https://ict.ihu.gr/carisma-workkg#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://ict.ihu.gr/carisma-workkg/scenario/incident-detection> a owl:Ontology ;
+    rdfs:label "CARISMA-WorkKG illustrative incident-detection scenario" ;
+    dcterms:creator "Adam P. Filippidis" ;
+    rdfs:comment "Hypothetical data reproducing Section 4 / Table 3 of the paper. Values are illustrative, not empirically calibrated." ;
+    owl:imports <https://ict.ihu.gr/carisma-workkg> ;
+    owl:versionInfo "0.2.0" .
+
+ex:A1_LogCorrelationTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Log-correlation upskilling (Analysts B, C)" ;
+    cw:addressesGap ex:ProficiencyGap_R1_LogCorrelation ;
+    cw:currency "EUR" ;
+    cw:durationDays "45"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 3000.0 .
+
+ex:A2_ReportingTraining a owl:NamedIndividual,
+        cw:TrainingAction ;
+    rdfs:label "Incident-reporting training" ;
+    cw:addressesGap ex:ProficiencyGap_R3_IncidentReporting ;
+    cw:currency "EUR" ;
+    cw:durationDays "20"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 1500.0 ;
+    cw:requiresAction ex:A4_EscalationProcedure .
+
+ex:A3_TuningReassessment a owl:NamedIndividual,
+        cw:ReassessmentAction ;
+    rdfs:label "Re-assess detection-rule tuning competence" ;
+    cw:addressesGap ex:EvidenceGap_R4_DetectionRuleTuning ;
+    cw:currency "EUR" ;
+    cw:durationDays "10"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 500.0 .
+
+ex:AssignA a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee ex:AnalystA ;
+    cw:assignedProfile ex:CyberIncidentResponder ;
+    cw:assignmentUnit ex:SOC ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+ex:AssignB a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee ex:AnalystB ;
+    cw:assignedProfile ex:CyberIncidentResponder ;
+    cw:assignmentUnit ex:SOC ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+ex:AssignC a owl:NamedIndividual,
+        cw:RoleAssignment ;
+    cw:allocationFraction 1.0 ;
+    cw:assignedEmployee ex:AnalystC ;
+    cw:assignedProfile ex:CyberIncidentResponder ;
+    cw:assignmentUnit ex:SOC ;
+    cw:validFrom "2024-01-01T00:00:00+00:00"^^xsd:dateTime .
+
+ex:CapabilityGap_IncidentDetection a owl:NamedIndividual,
+        cw:CapabilityGapAssessment ;
+    prov:wasDerivedFrom ex:EvidenceGap_R4_DetectionRuleTuning,
+        ex:MaturityGap_IncidentDetection,
+        ex:ProficiencyGap_R1_LogCorrelation,
+        ex:ProficiencyGap_R3_IncidentReporting ;
+    cw:combinedGapScore 0.3875 ;
+    cw:comparedMaturity ex:MA_IncidentDetection ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapPriority 0.34875 ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:maturityEvidenceCoverage 0.8 ;
+    cw:maturityGapScore 0.375 ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.3" ;
+    cw:priorityDetermined true ;
+    cw:proficiencyEvidenceCoverage 0.83333 ;
+    cw:proficiencyGapScore 0.4 .
+
+ex:Coverage_R2_IncidentTriage a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_Triage,
+        ex:CA_B_Triage,
+        ex:CA_C_Triage ;
+    cw:coverageDeficiency 0.0 ;
+    cw:coverageRequirement ex:R2_IncidentTriage ;
+    cw:coverageStatus cw:Covered ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "2"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee ex:AnalystA,
+        ex:AnalystB .
+
+ex:P4 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P4 - expert" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "4"^^xsd:nonNegativeInteger .
+
+ex:UndetectedIntrusion a owl:NamedIndividual,
+        cw:RiskScenario ;
+    rdfs:label "Intrusion on production systems goes undetected" ;
+    cw:affectsAsset ex:ProductionSIEM ;
+    cw:dependsOnCapability ex:IncidentDetection .
+
+ex:A4_EscalationProcedure a owl:NamedIndividual,
+        cw:ProcessImprovementAction ;
+    rdfs:label "Document escalation/reporting procedure and competence-maintenance arrangements" ;
+    cw:addressesGap ex:MaturityGap_IncidentDetection ;
+    cw:currency "EUR" ;
+    cw:durationDays "60"^^xsd:nonNegativeInteger ;
+    cw:estimatedCost 4000.0 .
+
+ex:C01 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C01 Capability responsibilities assigned" ;
+    cw:criterionDimension "responsibility and resourcing" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:C02 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C02 Capability resources allocated" ;
+    cw:criterionDimension "responsibility and resourcing" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:C03 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C03 Recurring activities planned" ;
+    cw:criterionDimension "process definition" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:C04 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C04 Supervisory review of work" ;
+    cw:criterionDimension "performance measurement" ;
+    cw:criterionForLevel cw:ML2 ;
+    cw:criterionMandatory true .
+
+ex:C05 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C05 Documented core procedure in use" ;
+    cw:criterionDimension "process definition" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:C09 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C09 Quality measures defined" ;
+    cw:criterionDimension "performance measurement" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:C10 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C10 Lessons learned reviewed" ;
+    cw:criterionDimension "continuous improvement" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:CA_A_Triage a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentTriage ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_Triage a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentTriage ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_Triage a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentTriage ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CR01 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C01 .
+
+ex:CR02 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C02 .
+
+ex:CR03 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C03 .
+
+ex:CR04 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C04 .
+
+ex:CR05 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:Met ;
+    cw:resultCriterion ex:C05 .
+
+ex:CR06 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C06 .
+
+ex:CR07 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotMet ;
+    cw:resultCriterion ex:C07 .
+
+ex:CR08 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:PartlyMet ;
+    cw:resultCriterion ex:C08 .
+
+ex:CR09 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C09 .
+
+ex:CR10 a owl:NamedIndividual,
+        cw:CriterionResult ;
+    cw:criterionStatus cw:NotAssessed ;
+    cw:resultCriterion ex:C10 .
+
+ex:Coverage_R1_LogCorrelation a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_LogCorr,
+        ex:CA_B_LogCorr,
+        ex:CA_C_LogCorr ;
+    cw:coverageDeficiency 0.5 ;
+    cw:coverageRequirement ex:R1_LogCorrelation ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "1"^^xsd:nonNegativeInteger ;
+    cw:qualifiedEmployee ex:AnalystA .
+
+ex:Coverage_R3_IncidentReporting a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_Reporting,
+        ex:CA_B_Reporting,
+        ex:CA_C_Reporting ;
+    cw:coverageDeficiency 1.0 ;
+    cw:coverageRequirement ex:R3_IncidentReporting ;
+    cw:coverageStatus cw:Deficient ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+ex:Coverage_R4_DetectionRuleTuning a owl:NamedIndividual,
+        cw:RequirementCoverage ;
+    prov:wasDerivedFrom ex:CA_A_Tuning,
+        ex:CA_B_Tuning,
+        ex:CA_C_Tuning ;
+    cw:coverageRequirement ex:R4_DetectionRuleTuning ;
+    cw:coverageStatus cw:Unresolved ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:qualifiedCount "0"^^xsd:nonNegativeInteger .
+
+ex:CriticalityRationale a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Criticality rationale (illustrative)" ;
+    cw:scopeDescription "Stakeholder judgment: detection supports all production monitoring; criticality set to 0.90 on a 0..1 scale." .
+
+ex:LogCorrelationTask a owl:NamedIndividual,
+        cw:TaskType ;
+    rdfs:label "Log correlation" .
+
+ex:MaturityEvidence2026 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Maturity assessment evidence pack, September 2026 (synthetic)" .
+
+ex:P1 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P1 - basic" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "1"^^xsd:nonNegativeInteger .
+
+ex:SIEMPlatform a owl:NamedIndividual,
+        cw:Technology ;
+    rdfs:label "SIEM platform" .
+
+ex:C06 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C06 Documented escalation and reporting procedure" ;
+    cw:criterionDimension "process definition" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:C07 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C07 Arrangements for maintaining staff competence" ;
+    cw:criterionDimension "workforce development and continuity" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:C08 a owl:NamedIndividual,
+        cw:MaturityCriterion ;
+    rdfs:label "C08 Explicit competence requirements maintained" ;
+    cw:criterionDimension "workforce development and continuity" ;
+    cw:criterionForLevel cw:ML3 ;
+    cw:criterionMandatory true .
+
+ex:CA_A_LogCorr a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:LogCorrelation ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_A_Reporting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentReporting ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_A_Tuning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2024-05-20T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:DetectionRuleTuning ;
+    cw:assessedEmployee ex:AnalystA ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2024 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P3 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_LogCorr a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:LogCorrelation ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_Reporting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentReporting ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_B_Tuning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2024-05-20T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:DetectionRuleTuning ;
+    cw:assessedEmployee ex:AnalystB ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2024 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_LogCorr a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:LogCorrelation ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_Reporting a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2026-09-15T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:IncidentReporting ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2026 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P1 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:CA_C_Tuning a owl:NamedIndividual,
+        cw:CompetencyAssessment ;
+    cw:assessedAt "2024-05-20T09:00:00+00:00"^^xsd:dateTime ;
+    cw:assessedCompetency ex:DetectionRuleTuning ;
+    cw:assessedEmployee ex:AnalystC ;
+    cw:assessmentCapability ex:IncidentDetection ;
+    cw:hasEvidence ex:PracticalExercise2024 ;
+    cw:methodVersion "Practical rubric v0.1" ;
+    cw:observedLevel ex:P2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:EvidenceGap_R4_DetectionRuleTuning a owl:NamedIndividual,
+        cw:EvidenceGap ;
+    prov:wasDerivedFrom ex:Coverage_R4_DetectionRuleTuning ;
+    cw:comparedAssessment ex:CA_A_Tuning,
+        ex:CA_B_Tuning,
+        ex:CA_C_Tuning ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapRequirement ex:R4_DetectionRuleTuning ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+ex:MA_IncidentDetection a owl:NamedIndividual,
+        cw:MaturityAssessment ;
+    rdfs:label "Maturity assessment of incident detection" ;
+    cw:assessedAt "2026-09-30T09:00:00+00:00"^^xsd:dateTime ;
+    cw:hasCriterionResult ex:CR01,
+        ex:CR02,
+        ex:CR03,
+        ex:CR04,
+        ex:CR05,
+        ex:CR06,
+        ex:CR07,
+        ex:CR08,
+        ex:CR09,
+        ex:CR10 ;
+    cw:hasEvidence ex:MaturityEvidence2026 ;
+    cw:maturityCapability ex:IncidentDetection ;
+    cw:methodVersion "CARISMA maturity rubric v0.1" ;
+    cw:observedMaturity cw:ML2 ;
+    cw:reviewStatus cw:Accepted .
+
+ex:MaturityGap_IncidentDetection a owl:NamedIndividual,
+        cw:MaturityGap ;
+    cw:comparedMaturity ex:MA_IncidentDetection ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 ;
+    cw:unmetCriterion ex:C06,
+        ex:C07,
+        ex:C08 .
+
+ex:Monitoring a owl:NamedIndividual,
+        cw:TaskType ;
+    rdfs:label "Security monitoring" .
+
+ex:ProductionSIEM a owl:NamedIndividual,
+        cw:Asset ;
+    rdfs:label "Production SIEM" ;
+    cw:usesTechnology ex:SIEMPlatform .
+
+ex:ProficiencyGap_R1_LogCorrelation a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom ex:Coverage_R1_LogCorrelation ;
+    cw:comparedAssessment ex:CA_A_LogCorr,
+        ex:CA_B_LogCorr,
+        ex:CA_C_LogCorr ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapRequirement ex:R1_LogCorrelation ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+ex:ProficiencyGap_R3_IncidentReporting a owl:NamedIndividual,
+        cw:ProficiencyGap ;
+    prov:wasDerivedFrom ex:Coverage_R3_IncidentReporting ;
+    cw:comparedAssessment ex:CA_A_Reporting,
+        ex:CA_B_Reporting,
+        ex:CA_C_Reporting ;
+    cw:gapCapability ex:IncidentDetection ;
+    cw:gapRequirement ex:R3_IncidentReporting ;
+    cw:gapStatus cw:Open ;
+    cw:inSnapshot ex:Snapshot2026Q4 .
+
+ex:R2_IncidentTriage a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Incident triage at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:IncidentTriage ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+ex:TriageTask a owl:NamedIndividual,
+        cw:TaskType ;
+    rdfs:label "Incident triage" .
+
+ex:PracticalExercise2024 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Practical detection-engineering exercise, May 2024 (synthetic)" .
+
+ex:R1_LogCorrelation a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Log correlation at P3, 2 people" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:LogCorrelation ;
+    cw:requiredHeadcount "2"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 2.0 .
+
+ex:R3_IncidentReporting a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Incident reporting at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:IncidentReporting ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+ex:R4_DetectionRuleTuning a owl:NamedIndividual,
+        cw:CompetencyRequirement ;
+    rdfs:label "Detection-rule tuning at P3, 1 person" ;
+    cw:hasEvidence ex:RequirementReview ;
+    cw:requiredCompetency ex:DetectionRuleTuning ;
+    cw:requiredHeadcount "1"^^xsd:positiveInteger ;
+    cw:requiredLevel ex:P3 ;
+    cw:requirementCapability ex:IncidentDetection ;
+    cw:requirementSourceProfile ex:CyberIncidentResponder ;
+    cw:reviewStatus cw:Approved ;
+    cw:weight 1.0 .
+
+ex:LocalProficiencyScale a owl:NamedIndividual,
+        cw:ProficiencyScale ;
+    rdfs:label "Local practical proficiency rubric" ;
+    cw:sourceVersion "Illustrative rubric v0.1" .
+
+ex:RequirementReview a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Expert requirement review (illustrative)" ;
+    cw:scopeDescription "Synthetic expert-approved requirements; no claim of verbatim ECSF thresholds." .
+
+ex:DetectionRuleTuning a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Detection-rule tuning" .
+
+ex:IncidentReporting a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Incident reporting" .
+
+ex:IncidentTriage a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Incident triage" .
+
+ex:LogCorrelation a owl:NamedIndividual,
+        cw:Skill ;
+    rdfs:label "Log correlation" .
+
+ex:SOC a owl:NamedIndividual,
+        cw:OrganizationalUnit ;
+    rdfs:label "Security Operations Centre" .
+
+ex:AnalystC a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst C" .
+
+ex:AnalystB a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst B" .
+
+ex:CyberIncidentResponder a owl:NamedIndividual,
+        cw:RoleProfile ;
+    rdfs:label "Cyber Incident Responder (ECSF)" ;
+    cw:profileCompetency ex:DetectionRuleTuning,
+        ex:IncidentReporting,
+        ex:IncidentTriage,
+        ex:LogCorrelation ;
+    cw:profileTask ex:Monitoring,
+        ex:TriageTask .
+
+ex:P2 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P2 - intermediate" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "2"^^xsd:nonNegativeInteger .
+
+ex:AnalystA a owl:NamedIndividual,
+        cw:Employee ;
+    rdfs:label "Analyst A" .
+
+ex:P3 a owl:NamedIndividual,
+        cw:ProficiencyLevel ;
+    rdfs:label "P3 - proficient" ;
+    cw:levelScale ex:LocalProficiencyScale ;
+    cw:ordinalRank "3"^^xsd:nonNegativeInteger .
+
+ex:PracticalExercise2026 a owl:NamedIndividual,
+        cw:Evidence ;
+    rdfs:label "Practical SOC exercise, September 2026 (synthetic)" .
+
+ex:Snapshot2026Q4 a owl:NamedIndividual,
+        cw:AssessmentSnapshot ;
+    rdfs:label "Assessment snapshot 2026-10-04" ;
+    cw:alpha 0.5 ;
+    cw:assessedAt "2026-10-04T09:00:00+00:00"^^xsd:dateTime ;
+    cw:evidenceMaxAgeDays "365"^^xsd:nonNegativeInteger ;
+    cw:methodVersion "CARISMA-WorkKG scoring procedure v0.2" ;
+    cw:minMaturityEvidenceCoverage 0.8 ;
+    cw:minProficiencyEvidenceCoverage 0.8 ;
+    cw:scopeDescription "All SOC staff assigned to incident detection are included in the inventory. Parameters are illustrative study assumptions, not recommended defaults." ;
+    cw:snapshotUnit ex:SOC ;
+    cw:workforceInventoryComplete true .
+
+ex:IncidentDetection a owl:NamedIndividual,
+        cw:OrganizationalCapability ;
+    rdfs:label "Incident detection" ;
+    cw:capabilityCriticality 0.90 ;
+    cw:capabilityUnit ex:SOC ;
+    cw:hasEvidence ex:CriticalityRationale ;
+    cw:hasRequirement ex:R1_LogCorrelation,
+        ex:R2_IncidentTriage,
+        ex:R3_IncidentReporting,
+        ex:R4_DetectionRuleTuning ;
+    cw:performsTaskType ex:LogCorrelationTask,
+        ex:Monitoring,
+        ex:TriageTask ;
+    cw:supportsAsset ex:ProductionSIEM ;
+    cw:targetMaturity cw:ML3 .
+
+[] a owl:AllDifferent ;
+    owl:distinctMembers ( ex:AnalystA ex:AnalystB ex:AnalystC ) .
+

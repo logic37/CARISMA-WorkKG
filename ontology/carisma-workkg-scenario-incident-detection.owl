@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:cw="https://ict.ihu.gr/carisma-workkg#"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:prov="http://www.w3.org/ns/prov#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_LogCorr">
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystC"/>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelation"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProficiencyGap_R1_LogCorrelation">
+    <cw:gapStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Open"/>
+    <cw:gapRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R1_LogCorrelation"/>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_LogCorr"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_LogCorr"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_LogCorr"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyGap"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:gapCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Coverage_R1_LogCorrelation"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#UndetectedIntrusion">
+    <rdfs:label>Intrusion on production systems goes undetected</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RiskScenario"/>
+    <cw:dependsOnCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:affectsAsset rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProductionSIEM"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR07">
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#NotMet"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C07"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CapabilityGap_IncidentDetection">
+    <cw:proficiencyGapScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</cw:proficiencyGapScore>
+    <cw:gapPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.34875</cw:gapPriority>
+    <cw:priorityDetermined rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:priorityDetermined>
+    <cw:comparedMaturity rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MA_IncidentDetection"/>
+    <cw:maturityGapScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.375</cw:maturityGapScore>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProficiencyGap_R3_IncidentReporting"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#EvidenceGap_R4_DetectionRuleTuning"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MaturityGap_IncidentDetection"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProficiencyGap_R1_LogCorrelation"/>
+    <cw:proficiencyEvidenceCoverage rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.83333</cw:proficiencyEvidenceCoverage>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:methodVersion>CARISMA-WorkKG scoring procedure v0.3</cw:methodVersion>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CapabilityGapAssessment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:combinedGapScore rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3875</cw:combinedGapScore>
+    <cw:gapCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:gapStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Open"/>
+    <cw:maturityEvidenceCoverage rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.8</cw:maturityEvidenceCoverage>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_LogCorr">
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelation"/>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4">
+    <cw:alpha rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</cw:alpha>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#AssessmentSnapshot"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:minProficiencyEvidenceCoverage rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.8</cw:minProficiencyEvidenceCoverage>
+    <cw:workforceInventoryComplete rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:workforceInventoryComplete>
+    <cw:scopeDescription>All SOC staff assigned to incident detection are included in the inventory. Parameters are illustrative study assumptions, not recommended defaults.</cw:scopeDescription>
+    <cw:snapshotUnit rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SOC"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-10-04T09:00:00+00:00</cw:assessedAt>
+    <cw:minMaturityEvidenceCoverage rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.8</cw:minMaturityEvidenceCoverage>
+    <rdfs:label>Assessment snapshot 2026-10-04</rdfs:label>
+    <cw:methodVersion>CARISMA-WorkKG scoring procedure v0.2</cw:methodVersion>
+    <cw:evidenceMaxAgeDays rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">365</cw:evidenceMaxAgeDays>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Tuning">
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#DetectionRuleTuning"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2024"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-20T09:00:00+00:00</cw:assessedAt>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MA_IncidentDetection">
+    <cw:maturityCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <rdfs:label>Maturity assessment of incident detection</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityAssessment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR04"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR03"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR06"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR09"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR05"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR07"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR01"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR08"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR02"/>
+    <cw:hasCriterionResult rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR10"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MaturityEvidence2026"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-30T09:00:00+00:00</cw:assessedAt>
+    <cw:methodVersion>CARISMA maturity rubric v0.1</cw:methodVersion>
+    <cw:observedMaturity rdf:resource="https://ict.ihu.gr/carisma-workkg#ML2"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Skill"/>
+    <rdfs:label>Log correlation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LocalProficiencyScale">
+    <rdfs:label>Local practical proficiency rubric</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyScale"/>
+    <cw:sourceVersion>Illustrative rubric v0.1</cw:sourceVersion>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C10">
+    <rdfs:label>C10 Lessons learned reviewed</rdfs:label>
+    <cw:criterionDimension>continuous improvement</cw:criterionDimension>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentTriage">
+    <rdfs:label>Incident triage</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Skill"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Triage">
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentTriage"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C05">
+    <rdfs:label>C05 Documented core procedure in use</rdfs:label>
+    <cw:criterionDimension>process definition</cw:criterionDimension>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProficiencyGap_R3_IncidentReporting">
+    <cw:gapCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyGap"/>
+    <cw:gapStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Open"/>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Reporting"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Reporting"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Reporting"/>
+    <cw:gapRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R3_IncidentReporting"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Coverage_R3_IncidentReporting"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection">
+    <cw:capabilityUnit rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SOC"/>
+    <cw:supportsAsset rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProductionSIEM"/>
+    <cw:capabilityCriticality rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.90</cw:capabilityCriticality>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CriticalityRationale"/>
+    <cw:hasRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R3_IncidentReporting"/>
+    <cw:hasRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R1_LogCorrelation"/>
+    <cw:hasRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R2_IncidentTriage"/>
+    <cw:hasRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R4_DetectionRuleTuning"/>
+    <cw:performsTaskType rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelationTask"/>
+    <cw:performsTaskType rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Monitoring"/>
+    <cw:performsTaskType rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#TriageTask"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalCapability"/>
+    <rdfs:label>Incident detection</rdfs:label>
+    <cw:targetMaturity rdf:resource="https://ict.ihu.gr/carisma-workkg#ML3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R3_IncidentReporting">
+    <cw:requiredCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentReporting"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <cw:requiredHeadcount rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">1</cw:requiredHeadcount>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Approved"/>
+    <cw:weight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</cw:weight>
+    <cw:requirementCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:requirementSourceProfile rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder"/>
+    <cw:requiredLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+    <rdfs:label>Incident reporting at P3, 1 person</rdfs:label>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#RequirementReview"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C06">
+    <cw:criterionDimension>process definition</cw:criterionDimension>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML3"/>
+    <rdfs:label>C06 Documented escalation and reporting procedure</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#A2_ReportingTraining">
+    <cw:addressesGap rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProficiencyGap_R3_IncidentReporting"/>
+    <cw:requiresAction rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#A4_EscalationProcedure"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#TrainingAction"/>
+    <cw:estimatedCost rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1500</cw:estimatedCost>
+    <cw:currency>EUR</cw:currency>
+    <cw:durationDays rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">20</cw:durationDays>
+    <rdfs:label>Incident-reporting training</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R2_IncidentTriage">
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#RequirementReview"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Approved"/>
+    <cw:requiredCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentTriage"/>
+    <cw:weight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</cw:weight>
+    <cw:requirementSourceProfile rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder"/>
+    <cw:requiredHeadcount rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">2</cw:requiredHeadcount>
+    <rdfs:label>Incident triage at P3, 2 people</rdfs:label>
+    <cw:requirementCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:requiredLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AssignC">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleAssignment"/>
+    <cw:assignmentUnit rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SOC"/>
+    <cw:allocationFraction rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</cw:allocationFraction>
+    <cw:assignedProfile rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder"/>
+    <cw:validFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-01T00:00:00+00:00</cw:validFrom>
+    <cw:assignedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystC"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR09">
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C09"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#NotAssessed"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CriticalityRationale">
+    <cw:scopeDescription>Stakeholder judgment: detection supports all production monitoring; criticality set to 0.90 on a 0..1 scale.</cw:scopeDescription>
+    <rdfs:label>Criticality rationale (illustrative)</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Evidence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R4_DetectionRuleTuning">
+    <cw:requiredCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#DetectionRuleTuning"/>
+    <cw:requirementSourceProfile rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:weight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</cw:weight>
+    <rdfs:label>Detection-rule tuning at P3, 1 person</rdfs:label>
+    <cw:requiredLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#RequirementReview"/>
+    <cw:requirementCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:requiredHeadcount rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">1</cw:requiredHeadcount>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Approved"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P4">
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</cw:ordinalRank>
+    <cw:levelScale rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LocalProficiencyScale"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+    <rdfs:label>P4 - expert</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Coverage_R2_IncidentTriage">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Triage"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Triage"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Triage"/>
+    <cw:qualifiedCount rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</cw:qualifiedCount>
+    <cw:coverageDeficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</cw:coverageDeficiency>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:qualifiedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+    <cw:qualifiedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB"/>
+    <cw:coverageStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Covered"/>
+    <cw:coverageRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R2_IncidentTriage"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>Analyst A</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR03">
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Met"/>
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C03"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Tuning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2024"/>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#DetectionRuleTuning"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-20T09:00:00+00:00</cw:assessedAt>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#TriageTask">
+    <rdfs:label>Incident triage</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#TaskType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Reporting">
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentReporting"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystC"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P1"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Coverage_R4_DetectionRuleTuning">
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Tuning"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Tuning"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Tuning"/>
+    <cw:coverageStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Unresolved"/>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:coverageRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R4_DetectionRuleTuning"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <cw:qualifiedCount rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</cw:qualifiedCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR01">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C01"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Met"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR08">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C08"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#PartlyMet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Reporting">
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentReporting"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C01">
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML2"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdfs:label>C01 Capability responsibilities assigned</rdfs:label>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <cw:criterionDimension>responsibility and resourcing</cw:criterionDimension>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MaturityGap_IncidentDetection">
+    <cw:gapStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Open"/>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:unmetCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C06"/>
+    <cw:unmetCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C08"/>
+    <cw:unmetCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C07"/>
+    <cw:comparedMaturity rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MA_IncidentDetection"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityGap"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:gapCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C04">
+    <cw:criterionDimension>performance measurement</cw:criterionDimension>
+    <rdfs:label>C04 Supervisory review of work</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML2"/>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProductionSIEM">
+    <rdfs:label>Production SIEM</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Asset"/>
+    <cw:usesTechnology rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SIEMPlatform"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n5b3aae74874848078e2b3ac3a713117db1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+    <owl:distinctMembers rdf:nodeID="n5b3aae74874848078e2b3ac3a713117db2"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Tuning">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-05-20T09:00:00+00:00</cw:assessedAt>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2024"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystC"/>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#DetectionRuleTuning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C02">
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionDimension>responsibility and resourcing</cw:criterionDimension>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML2"/>
+    <rdfs:label>C02 Capability resources allocated</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P1">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>P1 - basic</rdfs:label>
+    <cw:levelScale rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LocalProficiencyScale"/>
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</cw:ordinalRank>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_LogCorr">
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelation"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R1_LogCorrelation">
+    <cw:requirementCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:requirementSourceProfile rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder"/>
+    <cw:requiredHeadcount rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">2</cw:requiredHeadcount>
+    <rdfs:label>Log correlation at P3, 2 people</rdfs:label>
+    <cw:requiredCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelation"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Approved"/>
+    <cw:weight rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</cw:weight>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#RequirementReview"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyRequirement"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:requiredLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#DetectionRuleTuning">
+    <rdfs:label>Detection-rule tuning</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Skill"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR05">
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C05"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Met"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2">
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</cw:ordinalRank>
+    <cw:levelScale rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LocalProficiencyScale"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+    <rdfs:label>P2 - intermediate</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+    <rdfs:label>Analyst B</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#RequirementReview">
+    <rdfs:label>Expert requirement review (illustrative)</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Evidence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:scopeDescription>Synthetic expert-approved requirements; no claim of verbatim ECSF thresholds.</cw:scopeDescription>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Reporting">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentReporting"/>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Coverage_R1_LogCorrelation">
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_LogCorr"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_LogCorr"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_LogCorr"/>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:coverageDeficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</cw:coverageDeficiency>
+    <cw:qualifiedCount rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</cw:qualifiedCount>
+    <cw:coverageStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Deficient"/>
+    <cw:qualifiedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+    <cw:coverageRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R1_LogCorrelation"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C03">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML2"/>
+    <rdfs:label>C03 Recurring activities planned</rdfs:label>
+    <cw:criterionDimension>process definition</cw:criterionDimension>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Triage">
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentTriage"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n5b3aae74874848078e2b3ac3a713117db2">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+    <rdf:rest rdf:nodeID="n5b3aae74874848078e2b3ac3a713117db3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection">
+    <rdfs:label>CARISMA-WorkKG illustrative incident-detection scenario</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <dcterms:creator>Adam P. Filippidis</dcterms:creator>
+    <rdfs:comment>Hypothetical data reproducing Section 4 / Table 3 of the paper. Values are illustrative, not empirically calibrated.</rdfs:comment>
+    <owl:versionInfo>0.2.0</owl:versionInfo>
+    <owl:imports rdf:resource="https://ict.ihu.gr/carisma-workkg"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AssignB">
+    <cw:validFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-01T00:00:00+00:00</cw:validFrom>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleAssignment"/>
+    <cw:assignmentUnit rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SOC"/>
+    <cw:allocationFraction rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</cw:allocationFraction>
+    <cw:assignedProfile rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder"/>
+    <cw:assignedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C08">
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML3"/>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <cw:criterionDimension>workforce development and continuity</cw:criterionDimension>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>C08 Explicit competence requirements maintained</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR04">
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C04"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Met"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Triage">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CompetencyAssessment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:assessedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-15T09:00:00+00:00</cw:assessedAt>
+    <cw:methodVersion>Practical rubric v0.1</cw:methodVersion>
+    <cw:assessedCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentTriage"/>
+    <cw:reviewStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Accepted"/>
+    <cw:observedLevel rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P2"/>
+    <cw:assessmentCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <cw:hasEvidence rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026"/>
+    <cw:assessedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystC"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C07">
+    <cw:criterionDimension>workforce development and continuity</cw:criterionDimension>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>C07 Arrangements for maintaining staff competence</rdfs:label>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#EvidenceGap_R4_DetectionRuleTuning">
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Tuning"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Tuning"/>
+    <cw:comparedAssessment rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Tuning"/>
+    <cw:gapCapability rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentDetection"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#EvidenceGap"/>
+    <cw:gapRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R4_DetectionRuleTuning"/>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Coverage_R4_DetectionRuleTuning"/>
+    <cw:gapStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Open"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AssignA">
+    <cw:validFrom rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2024-01-01T00:00:00+00:00</cw:validFrom>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleAssignment"/>
+    <cw:allocationFraction rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.0</cw:allocationFraction>
+    <cw:assignmentUnit rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SOC"/>
+    <cw:assignedProfile rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder"/>
+    <cw:assignedEmployee rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystA"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR02">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Met"/>
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C02"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR06">
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C06"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#NotMet"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Coverage_R3_IncidentReporting">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RequirementCoverage"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:coverageRequirement rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#R3_IncidentReporting"/>
+    <cw:coverageDeficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</cw:coverageDeficiency>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_A_Reporting"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_C_Reporting"/>
+    <prov:wasDerivedFrom rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CA_B_Reporting"/>
+    <cw:inSnapshot rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Snapshot2026Q4"/>
+    <cw:qualifiedCount rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</cw:qualifiedCount>
+    <cw:coverageStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#Deficient"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#A3_TuningReassessment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ReassessmentAction"/>
+    <cw:estimatedCost rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">500</cw:estimatedCost>
+    <cw:currency>EUR</cw:currency>
+    <rdfs:label>Re-assess detection-rule tuning competence</rdfs:label>
+    <cw:durationDays rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">10</cw:durationDays>
+    <cw:addressesGap rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#EvidenceGap_R4_DetectionRuleTuning"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelationTask">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#TaskType"/>
+    <rdfs:label>Log correlation</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#A4_EscalationProcedure">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProcessImprovementAction"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>Document escalation/reporting procedure and competence-maintenance arrangements</rdfs:label>
+    <cw:addressesGap rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MaturityGap_IncidentDetection"/>
+    <cw:currency>EUR</cw:currency>
+    <cw:durationDays rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">60</cw:durationDays>
+    <cw:estimatedCost rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4000</cw:estimatedCost>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystC">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Employee"/>
+    <rdfs:label>Analyst C</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C09">
+    <rdfs:label>C09 Quality measures defined</rdfs:label>
+    <cw:criterionDimension>performance measurement</cw:criterionDimension>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#MaturityCriterion"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionMandatory rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</cw:criterionMandatory>
+    <cw:criterionForLevel rdf:resource="https://ict.ihu.gr/carisma-workkg#ML3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#P3">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#ProficiencyLevel"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>P3 - proficient</rdfs:label>
+    <cw:levelScale rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LocalProficiencyScale"/>
+    <cw:ordinalRank rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</cw:ordinalRank>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CyberIncidentResponder">
+    <cw:profileCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentReporting"/>
+    <cw:profileCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#DetectionRuleTuning"/>
+    <cw:profileCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentTriage"/>
+    <cw:profileCompetency rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#LogCorrelation"/>
+    <rdfs:label>Cyber Incident Responder (ECSF)</rdfs:label>
+    <cw:profileTask rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Monitoring"/>
+    <cw:profileTask rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#TriageTask"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#RoleProfile"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#A1_LogCorrelationTraining">
+    <rdfs:label>Log-correlation upskilling (Analysts B, C)</rdfs:label>
+    <cw:estimatedCost rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000</cw:estimatedCost>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#TrainingAction"/>
+    <cw:durationDays rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">45</cw:durationDays>
+    <cw:addressesGap rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#ProficiencyGap_R1_LogCorrelation"/>
+    <cw:currency>EUR</cw:currency>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n5b3aae74874848078e2b3ac3a713117db3">
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystB"/>
+    <rdf:rest rdf:nodeID="n5b3aae74874848078e2b3ac3a713117db4"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#IncidentReporting">
+    <rdfs:label>Incident reporting</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Skill"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2024">
+    <rdfs:label>Practical detection-engineering exercise, May 2024 (synthetic)</rdfs:label>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Evidence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SOC">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#OrganizationalUnit"/>
+    <rdfs:label>Security Operations Centre</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#Monitoring">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#TaskType"/>
+    <rdfs:label>Security monitoring</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#PracticalExercise2026">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Evidence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>Practical SOC exercise, September 2026 (synthetic)</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#SIEMPlatform">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Technology"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>SIEM platform</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#CR10">
+    <cw:resultCriterion rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#C10"/>
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#CriterionResult"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <cw:criterionStatus rdf:resource="https://ict.ihu.gr/carisma-workkg#NotAssessed"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="n5b3aae74874848078e2b3ac3a713117db4">
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+    <rdf:first rdf:resource="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#AnalystC"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://ict.ihu.gr/carisma-workkg/scenario/incident-detection#MaturityEvidence2026">
+    <rdf:type rdf:resource="https://ict.ihu.gr/carisma-workkg#Evidence"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdfs:label>Maturity assessment evidence pack, September 2026 (synthetic)</rdfs:label>
+  </rdf:Description>
+</rdf:RDF>
