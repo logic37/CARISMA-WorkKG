@@ -1,4 +1,4 @@
-# CARISMA-WorkKG: ontology, SHACL shapes and SWING sensitivity analysis
+# CARISMA-WorkKG: ontology, SHACL shapes and SWING sensitivity analysis [![DOI](https://zenodo.org/badge/1448850855.svg)](https://doi.org/10.5281/zenodo.24024345)
 
 These are the companion files for the paper *CARISMA-WorkKG: A Knowledge Graph Framework for Cybersecurity Capability Assessment and Workforce Investment Prioritization*. We put them together so that anyone can open the ontology, run the validation rules on the case-study data, and reproduce the investment comparison in Section 4.3 without having to ask us for anything.
 
