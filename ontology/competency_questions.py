@@ -1,0 +1,85 @@
+"""Executes the six competency questions of the paper's Introduction as SPARQL queries over the
+case-study graph and writes results/competency_questions.md (plus one CSV per question).
+
+Graph: core ontology + portfolio snapshot (six capabilities, computed results) + investment alternatives.
+Usage: python competency_questions.py
+"""
+import csv
+from pathlib import Path
+import rdflib
+
+HERE = Path(__file__).resolve().parent
+OUT = HERE / "results"; OUT.mkdir(exist_ok=True)
+g = rdflib.Graph()
+for f in ("src/carisma-workkg-core.ttl", "carisma-workkg-scenario-portfolio.ttl", "src/scenario-investments.ttl"):
+    g.parse(HERE / f, format="turtle")
+
+PFX = """
+PREFIX cw:   <https://ict.ihu.gr/carisma-workkg#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+"""
+CQ = [
+ ("CQ1", "Which cybersecurity roles are required?",
+  "Role profiles from which the capabilities' competence requirements were derived, with the assets they protect.",
+  """SELECT ?role ?capability ?asset (COUNT(DISTINCT ?req) AS ?requirements) WHERE {
+       ?req cw:requirementSourceProfile ?p ; cw:requirementCapability ?cap .
+       ?cap cw:supportsAsset ?a .
+       ?p rdfs:label ?role . ?cap rdfs:label ?capability . ?a rdfs:label ?asset .
+     } GROUP BY ?role ?capability ?asset ORDER BY ?role"""),
+ ("CQ2", "Which competencies do those roles require in the organizational context?",
+  "Contextual competence requirements: competence, required level, headcount and weight per capability.",
+  """SELECT ?capability ?competence ?level ?headcount ?weight WHERE {
+       ?req a cw:CompetencyRequirement ; cw:requirementCapability ?cap ; cw:requiredCompetency ?c ;
+            cw:requiredLevel ?l ; cw:requiredHeadcount ?headcount ; cw:weight ?weight .
+       ?cap rdfs:label ?capability . ?c rdfs:label ?competence . ?l rdfs:label ?level .
+     } ORDER BY ?capability ?competence"""),
+ ("CQ3", "Which technologies and assets depend on those competencies?",
+  "Asset -> competence dependencies, materialized from the property chain assetRequiresCompetency ≡ inverse(supportsAsset) ∘ hasRequirement ∘ requiredCompetency (the reasoner infers them; here the same chain is traversed by the query).",
+  """SELECT ?asset (GROUP_CONCAT(DISTINCT ?competence; separator=", ") AS ?dependsOnCompetences) WHERE {
+       ?cap cw:supportsAsset ?a ; cw:hasRequirement ?req . ?req cw:requiredCompetency ?c .
+       ?a rdfs:label ?asset . ?c rdfs:label ?competence .
+     } GROUP BY ?asset ORDER BY ?asset"""),
+ ("CQ4", "Which employees demonstrate the required competencies through current, context-relevant evidence?",
+  "Employees counted as qualified for each requirement in the snapshot (accepted assessment at or above the required level, evidence within the age limit), from the computed RequirementCoverage records.",
+  """SELECT ?capability ?requirement ?required ?qualified (GROUP_CONCAT(DISTINCT COALESCE(?emp, ""); separator=", ") AS ?qualifiedEmployees) ?status WHERE {
+       ?cov a cw:RequirementCoverage ; cw:coverageRequirement ?req ; cw:qualifiedCount ?qualified ; cw:coverageStatus ?st .
+       ?req cw:requirementCapability ?cap ; cw:requiredHeadcount ?required ; rdfs:label ?requirement .
+       OPTIONAL { ?cov cw:qualifiedEmployee ?e . ?e rdfs:label ?emp }
+       ?cap rdfs:label ?capability . ?st rdfs:label ?status .
+     } GROUP BY ?capability ?requirement ?required ?qualified ?status ORDER BY ?capability ?requirement"""),
+ ("CQ5", "Where do organizational practices fall short of capability maturity targets?",
+  "Maturity gaps: unmet or partly met criteria per capability, from the computed MaturityGap records.",
+  """SELECT ?capability ?maturityGapScore (GROUP_CONCAT(DISTINCT ?crit; separator=", ") AS ?unmetCriteria) WHERE {
+       ?mg a cw:MaturityGap ; cw:gapCapability ?cap ; cw:unmetCriterion ?c .
+       ?ga a cw:CapabilityGapAssessment ; cw:gapCapability ?cap ; cw:maturityGapScore ?maturityGapScore .
+       ?cap rdfs:label ?capability . ?c rdfs:label ?crit .
+     } GROUP BY ?capability ?maturityGapScore ORDER BY DESC(?maturityGapScore)"""),
+ ("CQ6", "Which identified capability gaps warrant investment attention first?",
+  "Capability gap priorities (Table 6 of the paper) and the investment alternatives that address gaps of each capability.",
+  """SELECT ?capability ?priority ?determined (GROUP_CONCAT(DISTINCT COALESCE(?action, ""); separator=", ") AS ?addressedBy) WHERE {
+       ?ga a cw:CapabilityGapAssessment ; cw:gapCapability ?cap ; cw:priorityDetermined ?determined .
+       OPTIONAL { ?ga cw:gapPriority ?priority }
+       OPTIONAL { ?gap cw:gapCapability ?cap . ?act cw:addressesGap ?gap ; rdfs:label ?action .
+                  FILTER(STRSTARTS(STR(?act), "https://ict.ihu.gr/carisma-workkg/scenario/investments#")) }
+       ?cap rdfs:label ?capability .
+     } GROUP BY ?capability ?priority ?determined ORDER BY DESC(?priority)"""),
+]
+
+md = ["# Competency questions executed over the case-study graph\n",
+      "Generated by `competency_questions.py` from `src/carisma-workkg-core.ttl`, `carisma-workkg-scenario-portfolio.ttl` "
+      "and `src/scenario-investments.ttl`. Each question of the paper's Introduction is answered by one SPARQL query; "
+      "the full query text is in the script and the raw rows in `results/cq_<n>.csv`.\n"]
+for cid, question, how, q in CQ:
+    res = g.query(PFX + q)
+    rows = [[("" if v is None else str(v)) for v in r] for r in res]
+    vars_ = [str(v) for v in res.vars]
+    with open(OUT / f"cq_{cid[-1]}.csv", "w", newline="", encoding="utf-8") as fh:
+        w = csv.writer(fh); w.writerow(vars_); w.writerows(rows)
+    md.append(f"\n## {cid}. {question}\n\n*{how}*  \n**Rows returned: {len(rows)}**\n")
+    md.append("| " + " | ".join(vars_) + " |\n|" + "---|" * len(vars_))
+    for r in rows:
+        md.append("| " + " | ".join(c.replace("|", "/") for c in r) + " |")
+    print(f"{cid}: {len(rows)} rows")
+(OUT / "competency_questions.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+print("written results/competency_questions.md")
